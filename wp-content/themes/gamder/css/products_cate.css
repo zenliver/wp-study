@@ -1,0 +1,24 @@
+.products_cates_item_title {
+  pointer-events: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+.products_cates_item_title a {
+  color: #333333;
+  display: block;
+  pointer-events: initial;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+}
+.products_cates_item_title.active a {
+  color: #af4284;
+  font-weight: bold;
+}
+.products_cates_item_title:after {
+  content: "\f105";
+  top: 10px;
+}
+
+/*# sourceMappingURL=maps/products_cate.css.map */

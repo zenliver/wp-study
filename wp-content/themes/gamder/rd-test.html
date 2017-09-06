@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <!-- css -->
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="css/libs/animate.css">
+    <link rel="stylesheet" href="css/common.css">
+
+    <link rel="stylesheet" href="css/thispage.css">
+
+    <style media="screen">
+        body {
+            background-color: #fff;
+            font-size: 18px;
+        }
+        #rd-test {
+            width: 2155px;
+            transform: scale(0.88);
+            position: relative;
+            left: -120px;
+            top: -45px;
+        }
+        .test-320 {
+            width: 345px;
+            float: left;
+        }
+        .test-768 {
+            width: 793px;
+            float: left;
+        }
+        .test-992 {
+            width: 1017px;
+            float: left;
+        }
+        iframe {
+            border: none;
+        }
+        #copy {
+            position: absolute;
+            width: 100%;
+            bottom: 15px;
+        }
+        .btn.copy {
+            margin-left: 10px;
+            padding: 5px 15px;
+        }
+        .copy-767, .copy-768, .copy-992 {
+            line-height: 40px;
+        }
+    </style>
+
+    <title>响应式测试</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+
+    <div id="rd-test" class="clearfix">
+        <div class="test-320">
+            <iframe src="./index.html" width="345px" height="910px"></iframe>
+        </div>
+        <div class="test-768">
+            <iframe src="./index.html" width="793px" height="910px"></iframe>
+        </div>
+        <div class="test-992">
+            <iframe src="./index.html" width="1017px" height="910px"></iframe>
+        </div>
+    </div>
+
+    <div id="copy">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2 text-center copy-767">
+                    xs：<code>(max-width: 767px)</code><button type="button" name="button" class="btn btn-success copy" data-clipboard-target=".copy-767 code">复制</button>
+                </div>
+                <div class="col-md-4 text-center copy-768">
+                    sm：<code>(min-width: 768px) and (max-width: 991px)</code><button type="button" name="button" class="btn btn-success copy" data-clipboard-target=".copy-768 code">复制</button>
+                </div>
+                <div class="col-md-6 text-center copy-992">
+                    md：<code class="code-992">(min-width: 992px) and (max-width: 1199px)</code><button type="button" name="button" class="btn btn-success copy" data-clipboard-target=".copy-992 .code-992">复制</button> <br>
+                    <span>PC：</span><code class="code-1200">(min-width: 1200px)</code><button type="button" name="button" class="btn btn-success copy" data-clipboard-target=".copy-992 .code-1200">复制</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- js -->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/common.js" charset="utf-8"></script>
+
+    <script src="js/libs/clipboard.min.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        new Clipboard('.btn.copy');
+    </script>
+</body>
+</html>
