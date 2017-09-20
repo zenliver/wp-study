@@ -1,27 +1,29 @@
 <?php get_header(); ?>
 
-
     <div id="index_slides">
         <!-- Slider main container -->
         <div class="swiper-container">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
-                    <a href="#">
-                        <div class="swiper_slide_wrapper" style="background-image: url(<?php echo get_option('classic_options')['zen_banner1_url']; ?>);"></div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <div class="swiper_slide_wrapper" style="background-image: url(<?php echo get_option('classic_options')['zen_banner2_url']; ?>);"></div>
-                    </a>
-                </div>
-                <div class="swiper-slide">
-                    <a href="#">
-                        <div class="swiper_slide_wrapper" style="background-image: url(images/ui/index_banner1.jpg);"></div>
-                    </a>
-                </div>
+
+
+                <!--<?php
+                    // print_r($zenwp_opt['opt-slides']);
+
+                ?>-->
+                <?php
+                    foreach ($zenwp_opt['opt-slides'] as $key => $value) {
+                ?>
+                        <div class="swiper-slide">
+                            <a href="<?php echo $value['url'] ?>">
+                                <div class="swiper_slide_wrapper" style="background-image: url(<?php echo $value['image']?>);"></div>
+                            </a>
+                        </div>
+                <?php
+                    }
+                ?>
+
             </div>
             <!-- pagination -->
             <div class="swiper-pagination"></div>
@@ -40,7 +42,22 @@
     <div id="index_main">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
+
+                <!-- <?php print_r($zenwp_opt); ?> -->
+                <?php
+                    foreach ($zenwp_opt['opt-slides2'] as $key => $value) {
+                        ?>
+                        <div class="col-lg-3 col-md-6 col-sm-6">
+                            <div class="index_main_item">
+                                <a href="products.html"><img src="<?php echo $value['image'] ?>" alt="" class="img-responsive"></a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+
+                ?>
+
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="index_main_item">
                         <a href="products.html"><img src="images/ui/index_switch.jpg" alt="" class="img-responsive"></a>
                     </div>
@@ -49,12 +66,13 @@
                     <div class="index_main_item">
                         <a href="products.html"><img src="images/ui/index_socket.jpg" alt="" class="img-responsive"></a>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
+                </div> -->
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="index_main_item">
                         <a href="designer.html"><img src="images/ui/index_designer.jpg" alt="" class="img-responsive"></a>
                     </div>
-                </div>
+                </div> -->
+
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="index_main_item index_main_newsletter">
                         <div class="index_main_newsletter_title">join our newsletter</div>
@@ -125,5 +143,4 @@
     </div>
     <!-- index_btm_icons end -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

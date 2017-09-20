@@ -1,13 +1,32 @@
+<?php
+
+    global $zenwp_opt;
+
+
+    $top_menu_arr = wp_get_menu_array('顶部菜单');
+
+    $menu_arr_test = wp_get_nav_menu_items('顶部菜单');
+    // print_r($menu_arr_test);
+
+    $menu_arr_test_tree = wpse170033_nav_menu_object_tree( $menu_arr_test );
+    print_r($menu_arr_test_tree);
+
+
+?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="<?php the_field('keywords'); ?>">
+    <meta name="description" content="<?php the_field('description'); ?>">
 
 <?php wp_head(); ?>
+<?php
+    $options = get_option('classic_options');
+?>
+<!-- <?php print_r($options); ?> -->
 
     <!-- Redirect page by browser language -->
     <script src="js/lang-redirect.js" charset="utf-8"></script>
@@ -23,6 +42,7 @@
 
 
     <title><?php bloginfo('name'); ?></title>
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -48,36 +68,94 @@
                     </button>
                 </div>
                 <div class="collapse navbar-collapse" id="collapse-menu">
-                    <!-- <ul class="nav navbar-nav">
-                        <?php wp_nav_menu(); ?>
-                    </ul> -->
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="./">HOME</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">ABOUT US<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="about.html">About ARTDNA</a></li>
-                                <li><a href="designer.html">Designer</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="news.html">NEWS</a></li>
-                        <li><a href="products_cate.html">PRODUCTS</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">PROJECT CASES<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="case.html">PROJECT CASES</a></li>
-                                <li><a href="OEM_service.html">OEM Service</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="certification.html">CERTIFICATION</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">CONTACT<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="contact.html">CONTACT US</a></li>
-                                <li><a href="agent.html">Market Internationalization</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+
+                        <!-- <?php wp_nav_menu(array(
+                            'menu' => '顶部菜单',
+                            'menu_class' => 'nav navbar-nav',
+                            'menu_id' => 'test',
+                            'container' => '',
+                            'fallback_cb' => 'WP_Bootstrap_Navwalker::fallback',
+                            'walker' => new WP_Bootstrap_Navwalker()
+
+                        )); ?> -->
+
+
+
+
+                        <ul class="nav navbar-nav">
+                            <!-- <?php print_r($top_menu_arr); ?> -->
+                            <?php
+
+                                foreach ($top_menu_arr as $key => $top_menu_lv1) {
+                                    ?>
+                                    <?php
+                                        if (empty($top_menu_lv1['children'])) {
+                                            ?>
+                                            <li><a href="<?php echo $top_menu_lv1['url'] ?>"><?php echo $top_menu_lv1['title'] ?></a></li>
+                                            <?php
+                                        } else {
+                                            ?>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $top_menu_lv1['title'] ?><span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <?php
+                                                        foreach ($top_menu_lv1['children'] as $key => $top_menu_lv2) {
+                                                            ?>
+                                                            <li><a href="<?php echo $top_menu_lv2['url'] ?>"><?php echo $top_menu_lv2['title'] ?></a></li>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </ul>
+                                            </li>
+                                            <?php
+                                        }
+
+                                    ?>
+
+
+                                    <?php
+                                }
+
+                            ?>
+
+
+                            <?php if (1<>0): ?>
+                                <div class="">success</div>
+                            <?php else: ?>
+                                <div class="">fail</div>
+                            <?php endif; ?>
+
+
+                            <!-- <li class="active"><a href="./">HOME</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ABOUT US<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="about.html">About ARTDNA</a></li>
+                                    <li><a href="designer.html">Designer</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="news.html">NEWS</a></li>
+                            <li><a href="products_cate.html">PRODUCTS</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">PROJECT CASES<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="case.html">PROJECT CASES</a></li>
+                                    <li><a href="OEM_service.html">OEM Service</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="certification.html">CERTIFICATION</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">CONTACT<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="contact.html">CONTACT US</a></li>
+                                    <li><a href="agent.html">Market Internationalization</a></li>
+                                </ul>
+                            </li> -->
+
+
+                        </ul>
+
+
                 </div>
                 <div class="navbar_lang pull-right">
                     <div class="navbar_lang_wrapper">
