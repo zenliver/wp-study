@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-3">
                     <div class="footer_top_logo">
-                        <a href="./"><img src="images/ui/footer_logo.png" alt="" class="img-responsive"></a>
+                        <a href="./"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_logo.png" alt="" class="img-responsive"></a>
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9">
@@ -16,14 +16,14 @@
                             <span class="footer_top_contact_email">Email:<?php echo get_option('classic_options')['zen_fax_email']; ?></span>
                         </div>
                         <div class="footer_top_social">
-                            <a href="#"><img src="images/ui/footer_icon_facebook.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_rss.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_blogger.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_twitter.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_gplus.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_gdrive.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_skype.png" alt=""></a>
-                            <a href="#"><img src="images/ui/footer_icon_pinterest.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_facebook.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_rss.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_blogger.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_twitter.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_gplus.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_gdrive.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_skype.png" alt=""></a>
+                            <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/ui/footer_icon_pinterest.png" alt=""></a>
                         </div>
                     </div>
                 </div>

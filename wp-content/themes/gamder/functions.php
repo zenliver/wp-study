@@ -7,7 +7,9 @@
 
     require_once dirname(__FILE__).'/wp-bootstrap-navwalker.php';
 
-    register_nav_menu('顶部菜单','顶部菜单');
+    register_nav_menu('顶部菜单','test');
+
+
 
     /**
      * 移除菜单的多余CSS选择器
@@ -111,6 +113,6 @@
 
 
 
-    
+
 
 ?>

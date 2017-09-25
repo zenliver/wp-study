@@ -3,16 +3,19 @@
     global $zenwp_opt;
 
 
-    $top_menu_arr = wp_get_menu_array('顶部菜单');
+    $top_menu_arr = wp_get_menu_array(2);
 
     $menu_arr_test = wp_get_nav_menu_items('顶部菜单');
     // print_r($menu_arr_test);
 
     $menu_arr_test_tree = wpse170033_nav_menu_object_tree( $menu_arr_test );
-    print_r($menu_arr_test_tree);
+
 
 
 ?>
+
+<!-- <?php print_r($menu_arr_test_tree); ?> -->
+
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -22,6 +25,8 @@
     <meta name="keywords" content="<?php the_field('keywords'); ?>">
     <meta name="description" content="<?php the_field('description'); ?>">
 
+
+
 <?php wp_head(); ?>
 <?php
     $options = get_option('classic_options');
@@ -29,7 +34,7 @@
 <!-- <?php print_r($options); ?> -->
 
     <!-- Redirect page by browser language -->
-    <script src="js/lang-redirect.js" charset="utf-8"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/js/lang-redirect.js" charset="utf-8"></script>
     <!-- css -->
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/libs/bootstrap.min.css">
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/libs/font-awesome.min.css">
@@ -159,10 +164,10 @@
                 </div>
                 <div class="navbar_lang pull-right">
                     <div class="navbar_lang_wrapper">
-                        <a href="./" class="lang_en"><img src="images/ui/lang_eng.png" alt=""></a>
-                        <a href="./?lang=ar" class="lang_ar"><img src="images/ui/lang_arabic.png" alt=""></a>
-                        <a href="./?lang=ru" class="lang_ru"><img src="images/ui/lang_ru.png" alt=""></a>
-                        <a href="./?lang=es" class="lang_es"><img src="images/ui/lang_spn.png" alt=""></a>
+                        <a href="./" class="lang_en"><img src="<?php bloginfo('template_directory'); ?>/images/ui/lang_eng.png" alt=""></a>
+                        <a href="./?lang=ar" class="lang_ar"><img src="<?php bloginfo('template_directory'); ?>/images/ui/lang_arabic.png" alt=""></a>
+                        <a href="./?lang=ru" class="lang_ru"><img src="<?php bloginfo('template_directory'); ?>/images/ui/lang_ru.png" alt=""></a>
+                        <a href="./?lang=es" class="lang_es"><img src="<?php bloginfo('template_directory'); ?>/images/ui/lang_spn.png" alt=""></a>
                     </div>
                 </div>
             </div>
