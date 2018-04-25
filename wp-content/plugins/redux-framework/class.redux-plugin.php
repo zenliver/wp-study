@@ -26,7 +26,7 @@
              * @since       3.0.0
              */
 
-            const VERSION = '3.6.5';
+            const VERSION = '3.6.7.7';
 
             /**
              * @access      protected
@@ -156,10 +156,6 @@
                 // Include demo config, if demo mode is active
                 if ( $this->options['demo'] && file_exists( dirname( __FILE__ ) . '/sample/sample-config.php' ) ) {
                     require_once dirname( __FILE__ ) . '/sample/sample-config.php';
-                }
-
-                if (file_exists(dirname( __FILE__ ).'/../../themes/gamder/zenliver-config.php')) {
-                    require_once dirname( __FILE__ ).'/../../themes/gamder/zenliver-config.php';
                 }
             }
 
@@ -312,6 +308,8 @@
              * @return      void
              */
             private static function single_activate() {
+                $notices = array();
+                
                 $notices   = get_option( 'ReduxFrameworkPlugin_ACTIVATED_NOTICES', array() );
                 $notices[] = __( 'Redux Framework has an embedded demo.', 'redux-framework' ) . ' <a href="./plugins.php?ReduxFrameworkPlugin=demo">' . __( 'Click here to activate the sample config file.', 'redux-framework' ) . '</a>';
 

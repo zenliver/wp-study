@@ -1,0 +1,352 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Math Captcha\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-06 08:28+0800\n"
+"PO-Revision-Date: 2017-05-06 08:52+0800\n"
+"Last-Translator: admin <e.solagirl@gmail.com>\n"
+"Language-Team: 倡萌@WordPress大学 <admin@cmhello.com>\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=1;\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/class-core.php:37 includes/class-core.php:38
+#: includes/class-core.php:39
+msgid "ERROR"
+msgstr "错误"
+
+#: includes/class-core.php:37 includes/integrations/contact-form-7.php:104
+msgid "Please enter captcha value."
+msgstr "请输入验证码。"
+
+#: includes/class-core.php:38 includes/integrations/contact-form-7.php:100
+msgid "Invalid captcha value."
+msgstr "无效的验证码。"
+
+#: includes/class-core.php:39 includes/integrations/contact-form-7.php:108
+msgid "Captcha time expired."
+msgstr "验证码超时。"
+
+#: includes/class-core.php:395
+msgid "one"
+msgstr "一"
+
+#: includes/class-core.php:396
+msgid "two"
+msgstr "二"
+
+#: includes/class-core.php:397
+msgid "three"
+msgstr "三"
+
+#: includes/class-core.php:398
+msgid "four"
+msgstr "四"
+
+#: includes/class-core.php:399
+msgid "five"
+msgstr "五"
+
+#: includes/class-core.php:400
+msgid "six"
+msgstr "六"
+
+#: includes/class-core.php:401
+msgid "seven"
+msgstr "七"
+
+#: includes/class-core.php:402
+msgid "eight"
+msgstr "八"
+
+#: includes/class-core.php:403
+msgid "nine"
+msgstr "九"
+
+#: includes/class-core.php:404
+msgid "ten"
+msgstr "十"
+
+#: includes/class-core.php:405
+msgid "eleven"
+msgstr "十一"
+
+#: includes/class-core.php:406
+msgid "twelve"
+msgstr "十二"
+
+#: includes/class-core.php:407
+msgid "thirteen"
+msgstr "十三"
+
+#: includes/class-core.php:408
+msgid "fourteen"
+msgstr "十四"
+
+#: includes/class-core.php:409
+msgid "fifteen"
+msgstr "十五"
+
+#: includes/class-core.php:410
+msgid "sixteen"
+msgstr "十六"
+
+#: includes/class-core.php:411
+msgid "seventeen"
+msgstr "十七"
+
+#: includes/class-core.php:412
+msgid "eighteen"
+msgstr "十八"
+
+#: includes/class-core.php:413
+msgid "nineteen"
+msgstr "十九"
+
+#: includes/class-core.php:414
+msgid "twenty"
+msgstr "二十"
+
+#: includes/class-core.php:415
+msgid "thirty"
+msgstr "三十"
+
+#: includes/class-core.php:416
+msgid "forty"
+msgstr "四十"
+
+#: includes/class-core.php:417
+msgid "fifty"
+msgstr "五十"
+
+#: includes/class-core.php:418
+msgid "sixty"
+msgstr "六十"
+
+#: includes/class-core.php:419
+msgid "seventy"
+msgstr "七十"
+
+#: includes/class-core.php:420
+msgid "eighty"
+msgstr "八十"
+
+#: includes/class-core.php:421
+msgid "ninety"
+msgstr "九十"
+
+#: includes/class-settings.php:29
+msgid "login form"
+msgstr "登录表单"
+
+#: includes/class-settings.php:30
+msgid "registration form"
+msgstr "注册表单"
+
+#: includes/class-settings.php:31
+msgid "reset password form"
+msgstr "密码重置表单"
+
+#: includes/class-settings.php:32
+msgid "comment form"
+msgstr "评论表单"
+
+#: includes/class-settings.php:33
+msgid "bbpress"
+msgstr "bbpress"
+
+#: includes/class-settings.php:34
+msgid "contact form 7"
+msgstr "contact form 7"
+
+#: includes/class-settings.php:38
+msgid "addition (+)"
+msgstr "加法"
+
+#: includes/class-settings.php:39
+msgid "subtraction (-)"
+msgstr "减法"
+
+#: includes/class-settings.php:40
+msgid "multiplication (&#215;)"
+msgstr "乘法"
+
+#: includes/class-settings.php:41
+msgid "division (&#247;)"
+msgstr "除法"
+
+#: includes/class-settings.php:45
+msgid "numbers"
+msgstr "数字"
+
+#: includes/class-settings.php:46
+msgid "words"
+msgstr "文字"
+
+#: includes/class-settings.php:55 includes/class-settings.php:67
+#: includes/class-settings.php:70 includes/integrations/contact-form-7.php:135
+msgid "Math Captcha"
+msgstr "算术验证码"
+
+#: includes/class-settings.php:72
+msgid "Need support?"
+msgstr "需要帮助？"
+
+#: includes/class-settings.php:73
+msgid ""
+"If you are having problems with this plugin, please talk about them in the"
+msgstr "使用这个插件遇到问题，请反馈到  "
+
+#: includes/class-settings.php:73
+msgid "Support forum"
+msgstr "支持论坛"
+
+#: includes/class-settings.php:75
+msgid "Do you like this plugin?"
+msgstr "喜欢这个插件？"
+
+#: includes/class-settings.php:76
+msgid "Rate it 5"
+msgstr "在 WordPress.org 给个五星评价"
+
+#: includes/class-settings.php:76
+msgid "on WordPress.org"
+msgstr " "
+
+#: includes/class-settings.php:77
+msgid "Blog about it & link to the"
+msgstr "发布文章介绍它并链接到"
+
+#: includes/class-settings.php:77
+msgid "plugin page"
+msgstr "插件页面"
+
+#: includes/class-settings.php:78
+msgid "Check out our other"
+msgstr "查看我们的其他"
+
+#: includes/class-settings.php:78
+msgid "WordPress plugins"
+msgstr "WordPress 插件"
+
+#: includes/class-settings.php:97
+msgid "Reset to defaults"
+msgstr "重置为默认"
+
+#: includes/class-settings.php:113
+msgid "Math Captcha settings"
+msgstr "算术验证码设置"
+
+#: includes/class-settings.php:114
+msgid "Enable Math Captcha for"
+msgstr "启用算术验证码给"
+
+#: includes/class-settings.php:115
+msgid "Hide for logged in users"
+msgstr "已登录用户隐藏验证码"
+
+#: includes/class-settings.php:116
+msgid "Mathematical operations"
+msgstr "数学运算法"
+
+#: includes/class-settings.php:117
+msgid "Display captcha as"
+msgstr "显示验证码为"
+
+#: includes/class-settings.php:118
+msgid "Captcha field title"
+msgstr "验证码字段标题"
+
+#: includes/class-settings.php:119
+msgid "Captcha time"
+msgstr "验证码有效期"
+
+# @ alipay
+#: includes/class-settings.php:120
+msgid "Block Direct Comments"
+msgstr "阻止直接评论"
+
+#: includes/class-settings.php:121
+msgid "Deactivation"
+msgstr "禁用"
+
+#: includes/class-settings.php:136
+msgid "Select where you'd like to use Math Captcha."
+msgstr "选择你要使用算术验证码的地方。"
+
+#: includes/class-settings.php:145
+msgid "Enable to hide captcha for logged in users."
+msgstr "启用后，已登录的用户不需要输入验证码。"
+
+#: includes/class-settings.php:147
+msgid "Would you like to hide captcha for logged in users?"
+msgstr "你想要为已登录的用户隐藏验证码吗？"
+
+#: includes/class-settings.php:164
+msgid "Select which mathematical operations to use in your captcha."
+msgstr "选择你要使用的运算法。"
+
+#: includes/class-settings.php:181
+msgid "Select how you'd like to display you captcha."
+msgstr "选择你要如何显示验证码。"
+
+#: includes/class-settings.php:192
+msgid "How to entitle field with captcha?"
+msgstr "验证码的标题是什么？"
+
+#: includes/class-settings.php:203
+msgid "Enter the time (in seconds) a user has to enter captcha value."
+msgstr "用户必须在多少秒内输入验证码。"
+
+#: includes/class-settings.php:212
+msgid "Block direct access to wp-comments-post.php."
+msgstr "禁止直接访问 wp-comments-post.php。"
+
+#: includes/class-settings.php:214
+msgid "Enable this to prevent spambots from posting to Wordpress via a URL."
+msgstr "启用后，可以阻止机器人通过网址提交内容到 WordPress。"
+
+#: includes/class-settings.php:223
+msgid "Delete settings on plugin deactivation."
+msgstr "禁用插件的时候删除设置。"
+
+#: includes/class-settings.php:225
+msgid "Delete settings on plugin deactivation"
+msgstr "禁用插件时删除设置"
+
+#: includes/class-settings.php:263
+msgid ""
+"You need to check at least one mathematical operation. Defaults settings of "
+"this option restored."
+msgstr "你至少要选择一种运算法。已恢复这个选项的默认设置。"
+
+#: includes/class-settings.php:278
+msgid ""
+"You need to check at least one group. Defaults settings of this option "
+"restored."
+msgstr "你至少要选择一组。已恢复这个选项的默认设置。"
+
+#: includes/class-settings.php:310
+msgid "Settings restored to defaults."
+msgstr "恢复到默认设置。"
+
+#: wp-math-captcha.php:156
+msgid "Are you sure you want to reset these settings to defaults?"
+msgstr "你确定要恢复到默认设置？"
+
+#: wp-math-captcha.php:188
+msgid "Support"
+msgstr "支持"
+
+#: wp-math-captcha.php:211
+msgid "Settings"
+msgstr "设置"

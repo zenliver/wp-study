@@ -1,5 +1,45 @@
 # Redux Framework Changelog
 
+## 3.6.7.7
+* Fixed:    Path doesn't exist on first activation, via the filesystem API.
+
+## 3.6.7.3
+* Fixed:    #3414: Incorrect classname causing an error on load, via the filesystem API.
+
+## 3.6.7.2
+* Fixed:    #3413 - Restored old code allowing non array value for mode.  This is for backward compatibility only and is unsupported.
+
+## 3.6.7.1
+* Fixed:    #3410, #3409 - Dimensions field output causing index errors when mode not set in option array.
+
+## 3.6.7
+* Fixed:    #3406 - javascript hasClass improperly used, affected customizer.
+* Updated:  Google Fonts.
+
+## 3.6.6.3
+* Fixed:    Array declarations PHP 7.1 now requires.
+
+## 3.6.6.2
+* Updated:  Updated newsletter subscribe submit to support our newer newsletter server.
+
+## 3.6.6.1
+* Fixed:    #3379 - select_image field not properly displaying default.  'default' arg must now be the full path to default image.
+
+## 3.6.6
+* wp.org release.
+
+## 3.6.5.3
+* Fixed:    Misspelled class name is system info compiler causing System Status to fail.
+* Fixed:    #3359 - Responsive issue on option panel.  Too much blank space on panel in smartphone mode.
+* Fixed:    #2914, #3356 - Default image_select preset image not selected.  This was originally by design.  Now it's a thing.
+
+## 3.6.5.2
+* Update:   Parsedown.php for PHP 7.x
+* Fixed:    System status improperly reporting writable status on upload folder.
+
+## 3.6.5.1
+* Fixed:    #3124 - User submitted 'current_user_can' failing on PHP version <= 3.5.13.  Thanks for the assist, @sourabgupta88
+
 ## 3.6.5
 * Modified: #3321 - Font subset in typography not rendering on IE and Edge (Seriously?  People still use those?)
 * Modified: PHP7 compatibility.

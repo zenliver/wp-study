@@ -12,17 +12,7 @@
                     // print_r($zenwp_opt['opt-slides']);
 
                 ?>-->
-                <?php
-                    foreach ($zenwp_opt['opt-slides'] as $key => $value) {
-                ?>
-                        <div class="swiper-slide">
-                            <a href="<?php echo $value['url'] ?>">
-                                <div class="swiper_slide_wrapper" style="background-image: url(<?php echo $value['image']?>);"></div>
-                            </a>
-                        </div>
-                <?php
-                    }
-                ?>
+
 
             </div>
             <!-- pagination -->
@@ -43,19 +33,6 @@
         <div class="container-fluid">
             <div class="row">
 
-                <!-- <?php print_r($zenwp_opt); ?> -->
-                <?php
-                    foreach ($zenwp_opt['opt-slides2'] as $key => $value) {
-                        ?>
-                        <div class="col-lg-3 col-md-6 col-sm-6">
-                            <div class="index_main_item">
-                                <a href="products.html"><img src="<?php echo $value['image'] ?>" alt="" class="img-responsive"></a>
-                            </div>
-                        </div>
-                        <?php
-                    }
-
-                ?>
 
                 <!-- <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="index_main_item">

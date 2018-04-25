@@ -14,7 +14,7 @@
     $opt_name = "zenwp_opt";
 
     // This line is only for altering the demo. Can be easily removed.
-    $opt_name = apply_filters( 'redux_demo/opt_name', $opt_name );
+    $opt_name = apply_filters( 'zenwp_opt/opt_name', $opt_name );
 
     /*
      *

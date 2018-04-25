@@ -1,14 +1,18 @@
 <?php
 
     global $zenwp_opt;
+    // global $redux_demo;
+    // print_r($redux_demo);
 
+    // 菜单有两级时使用这个自定义函数（在主题functions.php中定义），输出的是一个带有二级子菜单关系的数组
+    $top_menu_arr = wp_get_menu_array_lv2(2);
 
-    $top_menu_arr = wp_get_menu_array(2);
-
+    // 菜单只有一级时使用系统内置函数即可，输出的是一个扁平的数组
     $menu_arr_test = wp_get_nav_menu_items('顶部菜单');
-    // print_r($menu_arr_test);
 
-    $menu_arr_test_tree = wpse170033_nav_menu_object_tree( $menu_arr_test );
+    // 菜单有三级或以上时使用这个自定义函数（在主题functions.php中定义），输出的是一个有上下级关系的树形数组
+        // 注意：这个函数的参数是上面系统内置函数的返回值（是一个扁平的数组）
+    // $menu_arr_test_tree = wpse170033_nav_menu_object_tree( $menu_arr_test );
 
 
 
@@ -92,6 +96,7 @@
                             <?php
 
                                 foreach ($top_menu_arr as $key => $top_menu_lv1) {
+                                    // print_r($top_menu_lv1);
                                     ?>
                                     <?php
                                         if (empty($top_menu_lv1['children'])) {
@@ -122,41 +127,6 @@
                                 }
 
                             ?>
-
-
-                            <?php if (1<>0): ?>
-                                <div class="">success</div>
-                            <?php else: ?>
-                                <div class="">fail</div>
-                            <?php endif; ?>
-
-
-                            <!-- <li class="active"><a href="./">HOME</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">ABOUT US<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="about.html">About ARTDNA</a></li>
-                                    <li><a href="designer.html">Designer</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="news.html">NEWS</a></li>
-                            <li><a href="products_cate.html">PRODUCTS</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">PROJECT CASES<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="case.html">PROJECT CASES</a></li>
-                                    <li><a href="OEM_service.html">OEM Service</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="certification.html">CERTIFICATION</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">CONTACT<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="contact.html">CONTACT US</a></li>
-                                    <li><a href="agent.html">Market Internationalization</a></li>
-                                </ul>
-                            </li> -->
-
 
                         </ul>
 
