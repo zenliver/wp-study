@@ -1,0 +1,332 @@
+== Changelog ==
+
+= 3.3.1 =
+
+Release Date: May 27rd, 2018
+
+* Added: Option to fix Wordpress update lock.
+* Added: Option to add custom code to wp head and body (priority 999).
+* Added: Option to set Featured Image Require For Posts.
+* Added: Option to Remove URL Field from Comment Form.
+* Added: Option to Make Comment Links Non Clickable.
+* Added: Option to Remove HTML Link Tags from comments.
+* Added: Option to Prevent Comments From Spamming.
+* Added: Option to Disable Wordpress Comments.
+* Added: Option to Enable Facebook Comments.
+* Added: Option to Enable HTML, css, js Minification.
+* Added: Option to Import/Export/Reset Plugin settings.
+* Added: Option to Set "alt" Attribute for Images.
+* Improvement: Admin UI -  Set active class to active tab.
+* Bug Fixed.
+
+= 3.3.0 =
+
+Release Date: May 23rd, 2018
+
+* Complete code rewrite.
+* Compatibility with Wordpress 4.9.
+* Added: SMTP mailer.
+* Added: Remove meta generator support for visual composer, wpml, layer slider.
+* Added: Option to remove html comments from source code.
+* Added: Option to disable yoast seo schema markup output.
+* Added: You can now set custom login page logo, backgroud image, login notice and also custom css styles.
+* Added: Option to remove X-Powered-by Header.
+* Added: HSTS expire time, preload and you can also include subdomains.
+* Added: New maintenance page design.
+* Added: Option to disable wordpress comments.
+* Added: Option to set custom post revision number.
+* Added: Option to set custom text replacing howdy.
+* Improvements: UI Improvements.
+* Major Bug Fix.
+
+= 3.2.9.6 =
+
+Release Date: July 14th, 2017
+
+* Bug Fix: Plugin Option is showing publicly on website after activating admin bar login.
+* Bug Fix: Deactivation Issue - After deactivation all settings are automettically gone.
+* Code Cleanup
+* UI Improvement & Minor Changes.
+
+= 3.2.9.5 =
+
+Release Date: June 30th, 2017
+
+* NEW: You can now Disable WordPress Search Feature.
+* NEW: You can now disable Debug Email notifications for Development Versions.
+* NEW: Added Suport for SVG file type.
+* Bug Fix: Manitenance mode enable button is automatically expanding.
+* Bug Fix: Headers already sent message is showing if you are offline.
+* Disable Tab Deprecated.
+* UI Improvement & Minor Changes.
+
+= 3.2.9.4 =
+
+Release Date: June 29th, 2017
+
+* NEW FEATURE
+
+  * NEW: You can now put your website in Maintenance Mode via mantenance Tab and it is applicable for not logged in users only.
+  * NEW: You can now select WordPress Auto Core Update Level.
+  * NEW: You can now disable Debug Email notifications for Development Versions.
+  * NEW: Added option to receive notification when a user is logging in to dashboard.
+
+* Tweak in Auto Replace Mixed Content.
+* UI Improvement & Some Changes.
+* Minor Bug Fixes.
+
+= 3.2.9.2 =
+
+Release Date: June 25th, 2017
+
+* NEW FEATURE
+
+  * NEW: You can now change WordPress Sender Email and Name.
+  * NEW: You can now enable maintenance mode on your wordpress site.
+
+* Tweak in Auto Replace Mixed Content.
+* Minor Bug Fixes.
+
+= 3.2.9.1 =
+
+Release Date: June 24th, 2017
+
+* NEW FEATURE
+
+  * NEW: Add a option for change howdy text in Advanced tab.
+
+* Change priority of header and footer.
+* Minor Bug Fixes.
+
+= 3.2.9 =
+
+Release Date: June 23rd, 2017
+
+* Bug Fixes
+
+  * Admin Bar option issue with WP multisite.
+  * Hide Pages from Frontend Search Results - option is not working.
+  * Admin bar is still showing after activating Disable Admin Bar option.
+  * Extra feed links are still showing issue.
+  * Remove Version from Stylesheet option braek the admin color scheme (midnight, sunrise).
+  * Minor tweaks.
+
+= 3.2.8.2 =
+
+Release Date: June 13th, 2017
+
+* NEW FEATURE
+
+  * NEW: XSS Protection (send xss header) added in Security tab.
+  * NEW: You can now exclude all pages from frontend search results.
+
+* Bug Fixes
+
+  * Fix compatibility issue with WP multisite.
+  * Fix multisite redirection issue after activation.
+
+= 3.2.8 =
+
+Release Date: June 11th, 2017
+
+* NEW FEATURE
+
+  * NEW: Header & footer tab added.
+  * NEW: You can now add your custom code to WP header or footer.
+  * NEW: Added option for showing login links to wordpress admin dashboard for logged out users.
+  * NEW: You can now remove or change login page title, image and links (go to login tab).
+  * NEW: 8 new option in customize tab.
+
+* Minor UI Changes.
+* Bug Fixes
+
+  * Fix compatibility issue with other plugins like WP Rocket, AMP for WP etc.
+  * WP admin header is showing wrong info.
+  * Tweak in default admin footer text.
+  * Fix admin widget.
+  * Fix notice after sav plugin settings.
+
+= 3.2.6.1 =
+
+Release Date: June 9th, 2017
+
+* Bug Fixes
+
+  * Help tab is not showing admin dashboard of plugin.
+  * WP Solution Admin Bar Links are showing wrong.
+  * Tweak in default admin footer text.
+  * Fix admin widget.
+  * Two same save changes notice are showing in plugin page.
+  * Use plugins_url() instead of directory name.
+
+= 3.2.6 =
+
+Release Date: June 9th, 2017
+
+* Introducing about icon beside all option slider.
+* Security tab Introduced.
+
+  * Added option for Disable User Enumeration.
+  * Added option for Enable iFrame Protection.
+  * Added option for Enable No-Sniff Header.
+  * Added option for Content copy protection.
+  * Introducing forece ssl detection option.
+
+* Set max-age header time period to 1 month.
+* Fix a bug in HSTS settings as it includes all subdomains.
+* Plugins & Themes file editor option moved into customize tab.
+* Add a success notice after saving the plugin settings.
+* Change register settings functions.
+* Minor Bug Fixes.
+* SSL and Plugins & Themes tabs are deprecated.
+* Added option for GitHub.
+
+= 3.2.5.1 =
+
+Release Date: June 7th, 2017
+
+* Fix a bug for Cloudflare flexible ssl.
+
+= 3.2.5 =
+
+Release Date: June 7th, 2017
+
+* Bug Fixes
+
+  * Fixed - add a filter for Custom right Footer Text.
+
+* SSL option Introduced.
+
+  * Added option for cleanup mixed content.
+  * Added option for CloudFlare Flexible SSL.
+  * Added HSTS Support.
+
+* Completely redesigned UI.
+* Stability improved.
+
+   * Custom Page Permalink is now automatically applied by hitting save changes.
+   * Introduced Option validation.
+
+* Introduce Handy guides.
+
+= 3.2.3 =
+
+Release Date: June 4th, 2017
+
+* Bug Fixes
+
+  * Fixed - Custom Left Footer Text showing default text in all plugin's page.
+
+* UI Improvement.
+
+= 3.2.2 =
+
+Release Date: June 3rd, 2017
+
+* Added option for change wordpress right admin footer text.
+* UI Improvement.
+* Minor Changes.
+
+= 3.2.1 =
+
+Release Date: June 2nd, 2017
+
+* Hook Updated
+
+= 3.2.0 =
+* Added option to change the adminarea footer text.
+* Compatibility with WordPress 4.8
+
+= 3.1.8 =
+* Login With Username Only option added
+* Disable Login Error Hint option added
+* Disable Login Page Shake option added
+
+= 3.1.5 =
+* Admin Bar Menu Added
+* Minor Bug Fixes
+
+= 3.1.2 =
+* Plugins & Themes tab added.
+* Enable Automatic Plugin Updates.
+* Enable Automatic Theme Updates.
+* Enable Automatic Translation Updates.
+
+= 3.1.0 =
+* Support tab added.
+
+= 3.0.8 =
+* Others tab added
+* Change wp custom permalink - option added (now you can chnage wp page permalinks easily).
+
+= 3.0.5 =
+* Introducing a disable plugin feature (disable all plugin at a time via one option).
+
+= 3.0.2 =
+* Option Added for automatic removal of orphaned shotcodes.
+
+= 2.1.8 =
+* Introducing a confirmation popup before posting.
+
+= 2.1.5 =
+* Option added for Option added for Disable Admin bar except Administrator.
+* Option added for Remove Admin Bar Logo.
+
+= 2.1.3 =
+* Option added for Option added for Option added for Option added for Disable Texturization - Smart Quotes.
+* Option added for Option added for Disable WP Capitalization Auto Correction.
+* Option added for Disable Auto Inserted Paragraphs (i.e. &lt;p&gt;  tags).
+
+= 2.1.0 =
+* Interchange plugin option.
+
+= 2.0.9 =
+* Added advance tab option
+* Added option for Disable Self Pingback & Trackback.
+
+= 2.0.6 =
+* Option added for Stylesheet/Script file names to exclude from version removal.
+
+= 2.0.4 =
+* Remove callback method.
+
+= 2.0.1 =
+* Privacy settings intruduced.
+* Added option for remove version number from scripts.
+* Added option for remove version number from stylesheets.
+
+= 1.1.8 =
+* Added option for Disable Posts Autosave.
+* Added option for Disable Posts Revision.
+
+= 1.1.5 =
+* Added option for WP Json and Rest API.
+
+= 1.1.2 =
+* Added option for disable wordpress emojis.
+
+= 1.1.0 =
+* Added option for remove previous and next Aparticle links.
+
+= 1.0.7 =
+* Tab introduce, UI Changes.
+* Plugin settings modification.
+* Minor bug fixes.
+
+= 1.0.6 =
+* Added option for disable XML-RPC fuctionality.
+* Added option for remove RSD links.
+* Added option for remove short links.
+
+= 1.0.4 =
+* Added option for remove all feed links.
+* Added option for disable wp feed fuctionality.
+
+= 1.0.2 =
+* plugin default url modification.
+
+= 1.0.1 =
+* Hooking method change.
+
+= 1.0.0 =
+* Initial release.

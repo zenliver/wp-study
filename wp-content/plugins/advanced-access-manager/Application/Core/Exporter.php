@@ -69,7 +69,7 @@ class AAM_Core_Exporter {
                 call_user_func(array($this, $method), explode(',', $features));
             } else {
                 $this->output = apply_filters(
-                        'aam-export', $this->output, $backet, $this->config
+                        'aam-export-filter', $this->output, $backet, $this->config
                 );
             }
         }
@@ -99,8 +99,13 @@ class AAM_Core_Exporter {
                     AAM_Core_Config::OPTION, 
                     serialize(AAM_Core_API::getOption(AAM_Core_Config::OPTION)
                 ));
+            } elseif ($feature == 'configpress') {
+                $this->add(
+                    'aam-configpress', 
+                    AAM_Core_ConfigPress::getInstance()->read()
+                );
             } else {
-                do_action('aam-export', 'system', $feature, $this);
+                do_action('aam-export-action', 'system', $feature, $this);
             }
         }
     }

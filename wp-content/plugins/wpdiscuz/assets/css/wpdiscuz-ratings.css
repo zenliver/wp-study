@@ -8,7 +8,7 @@
 #wpcomm .wpdiscuz-item .wpdiscuz-rating > .half:before {position: absolute; cursor:pointer;}
 #wpcomm .wpdiscuz-item .wpdiscuz-rating > label { float: right; }
 #wpcomm .wpd-form-col-full .wpdiscuz-item.wpd-field-rating.wpd-has-desc .wpd-field-desc{ right:0px; top:0px; position:relative; font-size:14px; margin-left:5px; padding: 0 7px;}
-#wpcomm .wpd-form-col-full .wpdiscuz-item.wpd-field-rating.wpd-has-desc .wpd-field-desc i.fa{ font-size:17px;}
+#wpcomm .wpd-form-col-full .wpdiscuz-item.wpd-field-rating.wpd-has-desc .wpd-field-desc i.far{ font-size:17px;}
 #wpcomm .wpd-form-col-full .wpd-field-group .wpd-field-group-title{ display:inline-block; vertical-align:baseline; padding:0px 0px 2px 0px; margin-top:-2px;}
 #wpcomm .wpd-form-col-full .wpdiscuz-item .wpdiscuz-rating{ padding:0px 6px 0px 0px; vertical-align:middle; line-height: 14px;}
 #wpcomm .wpd-form-col-full .wpd-item-wrap{ display:inline-block; float:left; padding-right:7px; vertical-align:baseline; padding:0px 1px 1px 1px;}
@@ -18,7 +18,7 @@
 .wpdiscuz-activ-stars{ position: absolute; display: flex; font-size: 22px; top: 0; left:0;}
 .wpdiscuz-pasiv-stars{ font-size: 22px; display: flex;}
 .wpdiscuz-activ-stars{ overflow:hidden;}
-.wpdiscuz-pasiv-stars i.fa, .wpdiscuz-activ-stars i.fa{ padding:0px 2px; font-size:20px;}
+.wpdiscuz-pasiv-stars i.wpdiscuz-pasiv-star, .wpdiscuz-activ-stars i.wpdiscuz-activ-star{ padding:0px 2px; font-size:20px;}
 .wpdiscuz-post-rating-wrap.wpd-custom-field{display: flex;flex-wrap: wrap;}
 .wpdiscuz-post-rating-wrap.wpd-custom-field > [class ^= wpdiscuz-post-rating-wrap-custom_field]{flex-basis: 25%;margin-bottom: 10px;}
 @media screen and (max-width: 1024px){

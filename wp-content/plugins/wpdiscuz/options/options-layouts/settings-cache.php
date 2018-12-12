@@ -3,12 +3,15 @@ if (!defined('ABSPATH')) {
     exit();
 }
 ?>
-<div>
-    <h2 style="padding:5px 10px 10px 10px; margin:0px;"><?php _e('Gravatar Cache', 'wpdiscuz'); ?></h2>
-    <table class="wp-list-table widefat plugins" style="margin-top:10px; border:none;">
+<div>    
+    <table class="wp-list-table widefat plugins wpdxb" style="margin-top:10px; border:none;">
         <tbody>
+            <tr>
+                <td><h2 class="wpd-subtitle"><?php _e('Gravatar Cache', 'wpdiscuz'); ?></h2></td>
+                <td></td>
+            </tr>
             <tr valign="top">
-                <th scope="row">
+                <th scope="row" style="width: 45%;">
                     <label for="isGravatarCacheEnabled"><?php _e('Enable Grvatar caching', 'wpdiscuz'); ?></label>
                     <?php if (!$this->optionsSerialized->isFileFunctionsExists) { ?>
                         <p class="desc"><?php _e('It seems on of important functions ("file_get_contents", "file_put_contents") of php is not exists.<br/> Please enable these functions in your server settings to use gravatar caching feature.', 'wpdiscuz'); ?></p>
@@ -16,50 +19,48 @@ if (!defined('ABSPATH')) {
                 </th>
                 <td>   
                     <input type="checkbox" <?php checked($this->optionsSerialized->isGravatarCacheEnabled == 1) ?> value="1" name="isGravatarCacheEnabled" id="isGravatarCacheEnabled" />
+                    <label for="isGravatarCacheEnabled"></label>
                 </td>
             </tr>
             <tr valign="top">
-                <th scope="row">
-                    <label for="gravatarCacheMethod"><?php _e('Caching method', 'wpdiscuz'); ?></label>
+                <th scope="row"><label for="gravatarCacheMethod"><?php _e('Caching method', 'wpdiscuz'); ?></label></th>
+                <th>   
+                    <div class="wpd-switch-field">
+                        <input type="radio" <?php checked($this->optionsSerialized->gravatarCacheMethod == 'runtime') ?> value="runtime" name="gravatarCacheMethod" id="gravatarCacheMethodRuntime" /><label for="gravatarCacheMethodRuntime"><?php _e('Runtime', 'wpdiscuz'); ?></label> 
+                        <input type="radio" <?php checked($this->optionsSerialized->gravatarCacheMethod == 'cronjob') ?> value="cronjob" name="gravatarCacheMethod" id="gravatarCacheMethodCronjob" /><label for="gravatarCacheMethodCronjob"><?php _e('Cron job', 'wpdiscuz'); ?></label>
+                    </div>
                 </th>
-                <td>   
-                    <fieldset>                        
-                        <label for="gravatarCacheMethodRuntime">
-                            <input type="radio" <?php checked($this->optionsSerialized->gravatarCacheMethod == 'runtime') ?> value="runtime" name="gravatarCacheMethod" id="gravatarCacheMethodRuntime" />
-                            <span><?php _e('Runtime', 'wpdiscuz'); ?></span>
-                        </label><br/>
-                        <label for="gravatarCacheMethodCronjob">
-                            <input type="radio" <?php checked($this->optionsSerialized->gravatarCacheMethod == 'cronjob') ?> value="cronjob" name="gravatarCacheMethod" id="gravatarCacheMethodCronjob" />
-                            <span><?php _e('Cron job', 'wpdiscuz'); ?></span>
-                        </label>
-                    </fieldset>
-                </td>
             </tr>
             <tr valign="top">
-                <th scope="row">
-                    <label for="gravatarCacheTimeout"><?php _e('Cache avatars for "X" days', 'wpdiscuz'); ?></label>
-                </th>
+                <th scope="row"><label for="gravatarCacheTimeout"><?php _e('Cache avatars for "X" days', 'wpdiscuz'); ?></label></th>
                 <td>
                     <?php $gravatarCacheTimeout = isset($this->optionsSerialized->gravatarCacheTimeout) && ($days = absint($this->optionsSerialized->gravatarCacheTimeout)) ? $days : 10; ?>
                     <input type="number" id="gravatarCacheTimeout" name="gravatarCacheTimeout" value="<?php echo $gravatarCacheTimeout; ?>"/>
                 </td>
             </tr>
             <tr>
-                <th>
-                    <?php _e('Purge expired caches', 'wpdiscuz'); ?>
-                </th>
+                <th><?php _e('Purge expired caches', 'wpdiscuz'); ?></th>
                 <td>
-                    <?php $cacheUrl = admin_url('admin-post.php/?action=purgeExpiredGravatarsCaches'); ?>
-                    <a id="wpdiscuz-purge-expired-gravatars-cache" href="<?php echo wp_nonce_url($cacheUrl, 'purgeExpiredGravatarsCaches'); ?>" class="button button-secondary" style="margin-left: 5px;"><?php _e('Purge expired caches', 'wpdiscuz'); ?></a>
+                    <?php $expiredCacheUrl = admin_url('admin-post.php?action=purgeExpiredGravatarsCaches'); ?>
+                    <a id="wpdiscuz-purge-expired-gravatars-cache" href="<?php echo wp_nonce_url($expiredCacheUrl, 'purgeExpiredGravatarsCaches'); ?>" class="button button-secondary" style="margin-left: 5px;"><?php _e('Purge expired caches', 'wpdiscuz'); ?></a>
                 </td>
             </tr>
             <tr>
-                <th>
-                    <?php _e('Purge all caches', 'wpdiscuz'); ?>
-                </th>
+                <th><?php _e('Purge all caches', 'wpdiscuz'); ?></th>
                 <td>
-                    <?php $cacheUrl = admin_url('admin-post.php/?action=purgeGravatarsCaches'); ?>
-                    <a id="wpdiscuz-purge-gravatars-cache" href="<?php echo wp_nonce_url($cacheUrl, 'purgeGravatarsCaches'); ?>" class="button button-secondary" style="margin-left: 5px;"><?php _e('Purge all caches', 'wpdiscuz'); ?></a>
+                    <?php $allCacheUrl = admin_url('admin-post.php?action=purgeGravatarsCaches'); ?>
+                    <a id="wpdiscuz-purge-gravatars-cache" href="<?php echo wp_nonce_url($allCacheUrl, 'purgeGravatarsCaches'); ?>" class="button button-secondary" style="margin-left: 5px;"><?php _e('Purge all caches', 'wpdiscuz'); ?></a>
+                </td>
+            </tr>
+            <tr>
+                <td><h2 class="wpd-subtitle"><?php _e('Statistics Cache', 'wpdiscuz'); ?></h2></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th><?php _e('Purge statistics caches', 'wpdiscuz'); ?></th>
+                <td>
+                    <?php $statCacheUrl = admin_url('admin-post.php?action=purgeStatisticsCache'); ?>
+                    <a id="wpdiscuz-purge-statistics-cache" href="<?php echo wp_nonce_url($statCacheUrl, 'purgeStatisticsCache'); ?>" class="button button-secondary" style="margin-left: 5px;"><?php _e('Purge statistics caches', 'wpdiscuz'); ?></a>
                 </td>
             </tr>
         </tbody>

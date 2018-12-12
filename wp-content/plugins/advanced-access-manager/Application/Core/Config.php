@@ -40,8 +40,16 @@ class AAM_Core_Config {
      * @access public
      */
     public static function bootstrap() {
+        // TODO: Remove in July 2019
+        add_filter(
+            'aam-configpress-compatibility-filter', 
+            'AAM_Core_Compatibility::checkConfigPressCompatibility'
+        );
+        
         if (is_multisite()) {
-            self::$config = AAM_Core_API::getOption(self::OPTION, array(), 'site');
+            self::$config = AAM_Core_Compatibility::normalizeConfigOptions(
+                    AAM_Core_API::getOption(self::OPTION, array(), 'site')
+            );
         } else {
             self::$config = AAM_Core_Compatibility::getConfig();
         }
@@ -59,28 +67,27 @@ class AAM_Core_Config {
      * @static
      */
     public static function get($option, $default = null) {
-        if (isset(self::$config[$option])) {
+        if (array_key_exists($option, self::$config)) {
             $response = self::$config[$option];
         } else {
             $response = self::readConfigPress($option, $default);
         }
         
-        return self::normalize(
-                apply_filters('aam-filter-config-get', $response, $option
-        ));
+        return self::normalize($response);
     }
     
     /**
+     * Normalize config option
      * 
-     * @param type $setting
-     * @return type
+     * @param string $setting
+     * 
+     * @return string
+     * 
+     * @access protected
+     * @static
      */
     protected static function normalize($setting) {
-        return str_replace(
-                array('{ABSPATH}'),
-                array(ABSPATH),
-                $setting
-        );
+        return str_replace(array('{ABSPATH}'), array(ABSPATH), $setting);
     }
     
     /**
@@ -108,12 +115,17 @@ class AAM_Core_Config {
     }
     
     /**
+     * Delete config option
      * 
-     * @param type $option
+     * @param string $option
+     * 
+     * @access public
+     * @static
      */
     public static function delete($option) {
-        if (isset(self::$config[$option])) {
+        if (array_key_exists($option, self::$config)) {
             unset(self::$config[$option]);
+            
             if (is_multisite()) {
                 AAM_Core_API::updateOption(self::OPTION, self::$config, 'site');
             } else {
@@ -134,12 +146,8 @@ class AAM_Core_Config {
      * @static
      */
     protected static function readConfigPress($param, $default = null) {
-        if (defined('AAM_CONFIGPRESS')) {
-            $config = AAM_ConfigPress::get('aam.' . $param, $default);
-        } else {
-            $config = $default;
-        }
-
+        $config = AAM_Core_ConfigPress::get('aam.' . $param, $default);
+        
         if (is_array($config) && isset($config['userFunc'])) {
             if (is_callable($config['userFunc'])) {
                 $response = call_user_func($config['userFunc']);

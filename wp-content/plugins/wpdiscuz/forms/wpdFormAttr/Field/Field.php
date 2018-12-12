@@ -14,10 +14,12 @@ abstract class Field {
     protected $fieldInputName;
     protected $fieldData;
     protected $fieldDefaultData;
+    protected $commenter;
 
     private function __construct() {
         $this->initType();
         $this->initDefaultData();
+        $this->commenter = wp_get_current_commenter();
     }
 
     public static function getInstance() {
@@ -58,10 +60,10 @@ abstract class Field {
                 }
                 ?>
                 <div class="wpd-field-actions">
-                    <i class="fa fa-pencil" title="<?php _e('Edit', 'wpdiscuz'); ?>"></i>
+                    <i class="fas fa-pencil-alt" title="<?php _e('Edit', 'wpdiscuz'); ?>"></i>
                     <?php if (!$this->isDefault) {
                         ?>
-                        |<i class="fa fa-trash" title="<?php _e('Delete', 'wpdiscuz'); ?>"></i>
+                        |<i class="fas fa-trash-alt" title="<?php _e('Delete', 'wpdiscuz'); ?>"></i>
                     <?php }
                     ?>
                 </div>
@@ -122,7 +124,7 @@ abstract class Field {
             $cleanData['name'] = $name ? $name : $this->fieldDefaultData['name'];
         }
         if (isset($data['desc'])) {
-            $cleanData['desc'] = trim(strip_tags($data['desc']));
+            $cleanData['desc'] = trim($data['desc']);
         }
 
         if (isset($data['values'])) {

@@ -1,9 +1,9 @@
 === Comments - wpDiscuz ===
 Contributors: gVectors Team
-Tags: comment, comments, ajax comments, custom comment form, custom comment field
+Tags: GDPR, comments, ajax comments, custom comment form, custom comment field
 Requires at least: 4.4
 Tested up to: 4.9
-Stable tag: 4.1.4
+Stable tag: 5.1.2
 Requires PHP: 5.4 and higher
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -16,9 +16,10 @@ AJAX realtime comment system with custom comment form and fields. Designed to su
 Comments - wpDiscuz is Multisite and RTL ready!
 
 * Support Forum: [https://gvectors.com/forum/](https://gvectors.com/forum/)
-* wpDiscuz Demo: [http://wpdiscuz.com/wpdiscuz-4/](http://wpdiscuz.com/wpdiscuz-4/)
-* wpDiscuz Addons: [http://wpdiscuz.com/addons/](http://wpdiscuz.com/addons)
-* wpDiscuz Documentation: [http://wpdiscuz.com/wpdiscuz-documentation/](http://wpdiscuz.com/wpdiscuz-documentation/)
+* wpDiscuz Demo: [https://wpdiscuz.com/demo/](https://wpdiscuz.com/demo/)
+* wpDiscuz GDPR: [https://wpdiscuz.com/gdpr/](https://wpdiscuz.com/gdpr/)
+* wpDiscuz Addons: [https://wpdiscuz.com/addons/](https://wpdiscuz.com/addons)
+* wpDiscuz Documentation: [https://wpdiscuz.com/documentation/](https://wpdiscuz.com/documentation/)
 
 Integration with User Profile Plugins - Please read the [Integrations] Tab in wpDiscuz Settings admin page
 
@@ -35,49 +36,51 @@ Integration with AntiSpam plugins
 
 = Comments - wpDiscuz "Coming soon" Features: =
 
-* | New Feature : Sticky comments
+* New Feature : Follow Users
 
 = Comments - wpDiscuz Features: =
 
-* | Adds interactive comment box on posts and other content types
-* | Commenting can be allowed/disallowed on posts and other content types
-* | Responsive comments form and comment threads design
-* | Clean, simple and easy user interface and user experience
-* | Live update of new comments with notifier buttons
-* | Comment list sorting by newest, oldest and most voted comments
-* | Anonymous comments ( name and email can be set as not required )
-* | Full integration with Social Network Login plugins (Facebook, Twitter...)
-* | Multi-level (nested) comment threads, with maximum levels depth setting option
-* | Allows to create a new discussion thread and reply to existing comment
-* | Ajax button "Load More Comments" instead of simple comments pagination
-* | Lazy load wpDiscuz comments on scrolling
-* | Different comment date formats, reflects Wordpress date format settings
-* | Logged in users and guests can edit their comments (time-frame can be limited by admin)
-* | Automatic URLs to link conversion in comment texts
-* | Automatic image source URLs to image (HTML) conversion in comment texts
-* | Long comment text breaking function ("Read more" button)
-* | Multiple line-breaks (limited by Wordpress comment filter)
-* | Comment author notification options with special checkboxes on comment form
-* | Subscription activation via additional "Confirm Subscription" email
-* | Integration with Postmatic for subscriptions and commenting by email
-* | Ability to add comment system on attachment pages if it's allowed by Wordpress
-* | Fast and easy comment form with ajax validation and data submitting 
-* | Fully integrated and compatible with Wordpress 
-* | Uses Wordpress Comment system with all managing functions and features
-* | Secure and Anti-Spam features will not allow spammers to comment
-* | Comment voting with positive and negative result
-* | Smart voting system with tracking by logged-in user and cookies
-* | Post sharing options: Facebook, Twitter and Google+
-* | Quick Tags on comment form textarea
-* | Custom Comment Forms with custom fields
-* | Rating shortcode for posts via comment custom field [wpdrating] with a lot of attributes
-* | Option to overwrite comment template and style
-* | Highlighting new comments since last visit with different background
-* | Notification to comment author when comment was approved
-* | Display only parent comments with view replies (x) button
-* | Control commenters by roles (allow/restrict access to website comment area)
-* | Option to load all comments on first page load
-* | Built-in Gravatar caching
+* Adds interactive comment box on posts and other content types
+* Commenting can be allowed/disallowed on posts and other content types
+* Responsive comments form and comment threads design
+* Clean, simple and easy user interface and user experience
+* Live update of new comments with notifier buttons
+* Comment list sorting by newest, oldest and most voted comments
+* Anonymous comments ( name and email can be set as not required )
+* Full integration with Social Network Login plugins (Facebook, Twitter...)
+* Multi-level (nested) comment threads, with maximum levels depth setting option
+* Allows to create a new discussion thread and reply to existing comment
+* Ajax button "Load More Comments" instead of simple comments pagination
+* Lazy load wpDiscuz comments on scrolling
+* Different comment date formats, reflects Wordpress date format settings
+* Logged in users and guests can edit their comments (time-frame can be limited by admin)
+* Automatic URLs to link conversion in comment texts
+* Automatic image source URLs to image (HTML) conversion in comment texts
+* Long comment text breaking function ("Read more" button)
+* Multiple line-breaks (limited by Wordpress comment filter)
+* Comment author notification options with special checkboxes on comment form
+* Subscription activation via additional "Confirm Subscription" email
+* Integration with Postmatic for subscriptions and commenting by email
+* Ability to add comment system on attachment pages if it's allowed by Wordpress
+* Fast and easy comment form with ajax validation and data submitting 
+* Fully integrated and compatible with Wordpress 
+* Uses Wordpress Comment system with all managing functions and features
+* Secure and Anti-Spam features will not allow spammers to comment
+* Comment voting with positive and negative result
+* Smart voting system with tracking by logged-in user and cookies
+* Post sharing options: Facebook, Twitter and Google+
+* Quick Tags on comment form textarea
+* Custom Comment Forms with custom fields
+* Rating shortcode for posts via comment custom field [wpdrating] with a lot of attributes
+* Option to overwrite comment template and style
+* Highlighting new comments since last visit with different background
+* Notification to comment author when comment was approved
+* Display only parent comments with view replies (x) button
+* Control commenters by roles (allow/restrict access to website comment area)
+* Option to load all comments on first page load
+* Built-in Gravatar caching
+* Sticky Comments
+* Closed Comments Threads (disable replies)
 
 
 = Add-ons =
@@ -98,6 +101,7 @@ Integration with AntiSpam plugins
 * | [wpDiscuz - Advanced Likers](https://gvectors.com/product/wpdiscuz-advanced-likers/)
 * | [wpDiscuz - Comments Censure](https://gvectors.com/product/comments-censure-pro/)
 * | [wpDiscuz - Online Users](https://gvectors.com/product/wpdiscuz-online-users/)
+* | [wpDiscuz - Private Comments](https://gvectors.com/product/wpdiscuz-private-comments/)
 
 
 This comment system is also available for WooCommerce, Plugin name is WooDiscuz – WooCommerce Comments:
@@ -160,29 +164,160 @@ Nothing will be lost!  **Comments - wpDiscuz** will show all old comments.
 
 == Screenshots ==
 
-1. Comment list for non-logged in user | Screenshot #1
-2. Custom comment form and submitted comment with custom fields and rating | Screenshot #2
-3. Custom comment form creator user interface | Screenshot #3
-4. Comment form custom fields | Screenshot #4
-5. Comment form custom fields options | Screenshot #5
-6. Custom comment forms list | Screenshot #6
+1. wpDiscuz Comments - Default Style | Screenshot #1
+2. wpDiscuz Comments - Dark Style | Screenshot #2
+3. wpDiscuz Comments - Reply Form | Screenshot #3
+4. wpDiscuz Comments - Sticky Comment | Screenshot #4
+5. Custom comment form and submitted comment with custom fields and rating | Screenshot #5
+6. Custom comment form creator user interface | Screenshot #6
 7. wpDiscuz Settings | Screenshot #7
-8. wpDiscuz Comment form with "Media Uploader", "Emoticons" and "Comment Search" pro addons | Screenshot #8
-9. wpDiscuz Addon List | Screenshot #9
 
 == Changelog ==
+
+
+= Comments - wpDiscuz v5.1.2 =
+
+* Fixed Bug : Quotes in emails
+* Fixed Bug : Problems with hashing user IP addresses
+* Fixed Bug : Comment styling issues after editing
+* Fixed Bug : Social login issue
+* Fixed Bug : Cookies Consent checkbox
+
+
+IMPORTANT!
+
+- Please delete all caches and press CTRL+F5 on ebsite front-end after updating wpDiscuz
+- wpDiscuz uses FontAwesome version 5. If you have created custom comment fields with custom icons, please edit and update with new version icons.
+- Please update all addons once the wpDiscuz is updated to 5 version. Old addons are not compatible with wpDiscuz 5.
+- If you have customized wpDiscuz CSS or comment walker php file in WordPress theme folder please remove those. wpDiscuz 5.x.x versions don't support old template files.
+- If you have JetPack installed please deactivate Jetpack comments, it affects wpDiscuz
+- If you have a Cache Plugin, please delete all caches after wpDiscuz update.
+- If you use CDN and found some issue please purge it.
+- If your server PHP version is lower than 5.4, [please change it to higher](https://wordpress.org/support/topic/wpdiscuz-4-requires-php-5-4-and-higher/)
+
+
+= Comments - wpDiscuz v5.1.1 =
+
+Please follow to this instruction to create an agreement checkbox for GDPR compliance:
+[https://wpdiscuz.com/docs/wpdiscuz-documentation/gdpr/right-to-be-informed/](https://wpdiscuz.com/docs/wpdiscuz-documentation/gdpr/right-to-be-informed/)
+
+Please follow to this instruction to create a Cookies Consent checkbox:
+[https://wpdiscuz.com/docs/wpdiscuz-documentation/gdpr/cookies/](https://wpdiscuz.com/docs/wpdiscuz-documentation/gdpr/cookies/#checkbox)
+
+* Added: Cookies Consent checkbox (custom field in comment form)
+* Added: Option to display "Please login to comment" on comment form
+* Added: Redirect back to comment area after social login
+* Added: Vote ips hashing via ajax from tools page
+* Added: Tool to hash voter IP addresses in database (Comments > Tools > Other)
+* Fixed Bug: Gravatar caching problem
+* Fixed Bug: VK social login issue
+* Fixed Bug: Empty space under the footer area
+* Fixed Bug: Issue with active rating stars color
+* Fixed Bug: Update process overloads MySQL server on websites with a large database
+
+
+= Comments - wpDiscuz v5.1.0 =
+
+* Added: [Documentation -beta-](https://wpdiscuz.com/docs/wpdiscuz-documentation/)
+* Added: Comment GDPR | New Custom Field - Agreement checkbox
+* Added: Comment GDPR | Pre-authorization social login agreement
+* Added: Comment GDPR | Individual and bulk comment deleting features
+* Added: Comment GDPR | Individual and bulk cancel subscription features
+* Added: Comment GDPR | Button [Delete Cookies] for guests
+* Added: Comment GDPR | Doesn't save IP for comment votes and likes
+* Added: Comment GDPR | [Documentation](https://wpdiscuz.com/docs/wpdiscuz-documentation/gdpr/)
+* Added: Comment Form | Redesigned
+* Added: Comment Form | My Content and Settings button
+* Added: Comment Form | Discussion statistic (threads, replies, followers)
+* Added: Comment Form | Button - Most reacted comment
+* Added: Comment Form | Button - Hottest comment thread
+* Added: Comment Form | Recent comment author avatars
+* Added: Social Login | built-in social login buttons
+* Added: Social Login | Social Login/Share admin Tab (in Comments > Settings)
+* Added: Social Login | Facebook, Twitter, Google plus, VK and OK
+* Fixed Bug: MyISAM engine type not supported
+* Fixed Bug: Wrong user mentioning in email notification
+* Fixed Bug: Undefined index on stick/unstick and close/open actions
+* Fixed Bug: Many small bugs
+
+= Comments - wpDiscuz v5.0.7 =
+
+* Updated: Ultimate Member 2 integration code
+* Changed: JS code optimization to prevent json parse errors
+* Fixed Bug : Refresh CAPTCHA link jumps on top of site
+
+= Comments - wpDiscuz v5.0.6 =
+
+* Fixed Bug: "+" symbol in Comment Author Names
+* Fixed Bug: Problem with "Most voted" comment sorting
+* Fixed Bug: Spam protection issue on hosting with hard caching
+* Fixed Bug: Option to insert Antispam key (CAPTCHA Alternative)
+
+= Comments - wpDiscuz v5.0.5 =
+
+* Added: Shortcodes for Notification Emails Subject
+* Added: Tool to import subscriptions from "Subscribe To Comments Reloaded" plugin
+* Added: Filter hook to change trackback avatar image `wpdiscuz_avatar_trackback`,
+* Added: Action hook for General Data Protection Regulation (GDPR) checkbox `wpdiscuz_submit_button_before`,
+* Added: Filter hook to manage user labels `wpdiscuz_user_label`
+* Changed: Export / Import wpDiscuz Options using .txt file
+* Fixed Bug: Gravatar cache issue when passed variable is object
+* Fixed Bug: Delete Gravatar cache problem on "cron job" mode.
+
+
+= Comments - wpDiscuz v5.0.3 / v5.0.4 =
+
+* Added : Font-Awesome lib is updated to version 5
+* Added : Option to set child comments order.
+* Added : New hooks after sending notification email
+	- do_action('wpdiscuz_notify_post_subscribers', $postId, $commentId, $subscriberUserId, $subscriberEmail);
+	- do_action('wpdiscuz_notify_all_comment_subscribers', $postId, $newCommentId, $subscriberUserId, $subscriberEmail);
+	- do_action('wpdiscuz_notify_comment_subscribers', $parentCommentId, $newCommentId, $subscriberUserId, $subscriberEmail);
+* Added : Shortcodes in Emails (Comments > Phrases > Emails)
+* Added : New hook for gravatar size - apply_filters('wpdiscuz_gravatar_size', 64);
+* Changed: CAPTCHA directory in wp-content/uploads folder to avoid permission issues
+
+
+= Comments - wpDiscuz v5.0.2 =
+
+* Added : Closed Comments 
+* Added : Button to set comment thread closed (disable replies).
+* Fixed Bug : Comment text size option doesn't work
+* Fixed Bug : Notify of replies to this comment checked by default
+* Fixed Bug : Error message "Undefined variables if comments are closed"
+* Fixed Bug : Comment edit permission issue
+* Fixed Bug : Comment edit timeout (time frame limit doesn't affect admins, editors)
+* Fixed Bug : Gravatar caching issue 
+* Fixed Bug : Gravatar HTTPS protocol compatibility
+
+
+= Comments - wpDiscuz v5.0.0 / v5.0.1 =
+
+* Added : New Look and Feel
+* Added : Redesigned Comment List and Comment Form
+* Added : Better responsive design
+* Added : Default and Dark styles (Settings > Styling admin page)
+* Added : Admin settings and options page is redesigned, re-grouped.
+* Added : Sticky comment threads
+* Added : New filter to see sticky comments in backend
+* Added : Option to change voting buttons (arrows, likes, +/- and smiles)
+* Added : Option to hide comment date
+* Changed : Loading bar new style
+* Changed : Hide loading bar on live update requests
+* New Addon: [wpDiscuz Private Comments](https://gvectors.com/product/wpdiscuz-private-comments/)
+* Fixed Bug : "+" symbol in comment author name
+* Fixed Bug : Issues on Microsoft Edge browser
+* Fixed Bug : Missing Reply button on some comments
+* Fixed Bug : View/Hide replies translation issue
+* Fixed Bug : WP User Avatar plugin conflict
+* Fixed Bug : Replies are not showing after page refresh
+* Fixed Bug : Changing global "wpDiscuz" variable name to "wpdiscuz" to avoid errors in wpDiscuz Addons
+
 
 = Comments - wpDiscuz v4.1.4 =
 
 * Changed : Loadin bar style
 * Fixed Bug : Avatars caching table creation issue
-
-IMPORTANT:
-
-- If you have JetPack installed please deactivate Jetpack comments, it affects wpDiscuz
-- If you have a Cache Plugin, please delete all caches after wpDiscuz update.
-- If you use CDN and found some issue please purge it.
-- If your server PHP version is lower than 5.4, [please change it to hogher](https://wordpress.org/support/topic/wpdiscuz-4-requires-php-5-4-and-higher/)
 
 = Comments - wpDiscuz v4.1.3 =
 

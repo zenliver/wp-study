@@ -7,7 +7,9 @@ use wpdFormAttr\Field\Field;
 
 class Captcha extends Field {
 
+    private $wpUploadsDir;
     private $captchaDir;
+    private $captchaUrl;
     private $filesPath;
     private $msgImgCreateError;
     private $msgPermsDeniedError;
@@ -32,6 +34,9 @@ class Captcha extends Field {
                 <p class="wpd-info"><?php _e('Field specific short description or some rule related to inserted information.', 'wpdiscuz'); ?></p>
             </div>
             <div class="wpd-field-option">
+                <p class="wpd-info"><?php _e('For an advanced antispam protection please check <a target="blank" href="https://gvectors.com/product/wpdiscuz-recaptcha/">wpDiscuz - Google reCAPTCHA</a> addon.', 'wpdiscuz'); ?></p>
+            </div>
+            <div class="wpd-field-option">
                 <label for="wpd_captcha_show_for_guests"><?php _e('Show for guests', 'wpdiscuz'); ?>:</label> 
                 <input id="wpd_captcha_show_for_guests"  type="checkbox" value="1" <?php checked($this->fieldData['show_for_guests'], 1, true); ?> name="<?php echo $this->fieldInputName; ?>[show_for_guests]" />
             </div>
@@ -48,14 +53,19 @@ class Captcha extends Field {
         if ($options->isGoodbyeCaptchaActive) {
             echo $options->goodbyeCaptchaTocken;
         } else {
-            if ($this->isShowCaptcha($currentUser->ID, $args)) {
-                if (class_exists("wpDiscuzReCaptcha")) {
-                    global $wpDiscuzReCaptcha;
-                    $wpDiscuzReCaptcha->recaptchaHtml($uniqueId);
-                } else {
-                    $this->generateCaptchaHtml($args, $options);
-                }
+            $args = apply_filters('wpdiscuz_captcha_args', $args, $currentUser, $uniqueId, $isMainForm);
+            if ($this->isShowCaptcha($currentUser->ID, $args) && !isset($args['wpdiscuz_recaptcha'])) {
+                $this->generateCaptchaHtml($args, $options);
+            } else if (!isset($args['wpdiscuz_recaptcha']) && $options->displayAntispamNote && !$currentUser->exists()) {
+                ?>
+                <div class="wc-field-captcha wpdiscuz-item">
+                    <div class="wc-bin-captcha">
+                        <i class="fas fa-shield-alt"></i><?php echo $options->phrases['wc_invisible_antispam_note']; ?>
+                    </div>
+                </div>
+                <?php
             }
+            do_action('wpdiscuz_captcha_field', $args, $currentUser, $uniqueId, $isMainForm);
         }
     }
 
@@ -109,7 +119,18 @@ class Captcha extends Field {
             'show_for_guests' => '0',
             'show_for_users' => '0'
         );
-        $this->captchaDir = WPDISCUZ_DIR_PATH . WPDISCUZ_DS . 'utils' . WPDISCUZ_DS . 'temp';
+        $this->wpUploadsDir = wp_upload_dir();
+        $this->captchaDir = $this->wpUploadsDir['basedir'] . wpdFormConst::CAPTCHA_DIR;
+        $this->captchaUrl = is_ssl() ? str_replace('http://', 'https://', $this->wpUploadsDir['baseurl']) . wpdFormConst::CAPTCHA_DIR : $this->wpUploadsDir['baseurl'] . wpdFormConst::CAPTCHA_DIR;
+        wp_mkdir_p($this->captchaDir);
+        if (!file_exists($this->captchaDir . '.htaccess')) {
+            $data = 'Order deny,allow' . PHP_EOL;
+            $data .= 'Deny from all' . PHP_EOL;
+            $data .= '<Files ~ "^[0-9A-Za-z_\-]+\.(png)$">' . PHP_EOL;
+            $data .= 'Allow from all' . PHP_EOL;
+            $data .= '</Files>' . PHP_EOL;
+            file_put_contents($this->captchaDir . '.htaccess', $data);
+        }
         $this->filesPath = WPDISCUZ_DIR_PATH . WPDISCUZ_DS . 'utils' . WPDISCUZ_DS . 'captcha' . WPDISCUZ_DS;
         $this->msgImgCreateError = __('Cannot create image file', 'wpdiscuz');
         $this->msgPermsDeniedError = __('Permission denied for file creation', 'wpdiscuz');
@@ -131,7 +152,7 @@ class Captcha extends Field {
                 } else {
                     $cData = $this->createCaptchaImage();
                     $key = $cData['key'];
-                    $message = $cData['code'] ? 'src="' . plugins_url(WPDISCUZ_DIR_NAME . WPDISCUZ_DS . 'utils' . WPDISCUZ_DS . 'temp' . WPDISCUZ_DS . $cData['message']) . '"' : 'alt="' . $cData['message'] . '"';
+                    $message = $cData['code'] ? 'src="' . $this->captchaUrl . $cData['message'] . '"' : 'alt="' . $cData['message'] . '"';
                 }
                 ?>
                 <a class="wpdiscuz-nofollow" href="#" rel="nofollow"><img alt="wpdiscuz_captcha" class="wc_captcha_img" <?php echo $message; ?>  width="80" height="26"/></a><a class="wpdiscuz-nofollow wc_captcha_refresh_img" href="#" rel="nofollow"><img  alt="refresh" class="" src="<?php echo plugins_url(WPDISCUZ_DIR_NAME . WPDISCUZ_DS . 'assets' . WPDISCUZ_DS . 'img' . WPDISCUZ_DS . 'captcha-loading.png'); ?>" width="16" height="16"/></a>

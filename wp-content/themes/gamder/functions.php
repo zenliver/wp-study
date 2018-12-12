@@ -63,4 +63,16 @@
     add_filter('comment_form_default_fields','my_fields');
 
 
+    function create_option_update_info() {
+        $file = fopen(get_template_directory().'/option-update-info.json','w') or die('无法创建文件');
+        date_default_timezone_set('Asia/Shanghai');
+        $update_time = date('YmdHis');
+        $json = '{"optionUpdate":"'.$update_time.'"}';
+        fwrite($file,$json);
+        fclose($file);
+    }
+    add_action('updated_option','create_option_update_info');
+
+
+
 ?>

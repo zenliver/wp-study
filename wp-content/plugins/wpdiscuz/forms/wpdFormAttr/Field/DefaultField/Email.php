@@ -44,15 +44,16 @@ class Email extends Field {
     public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId,$isMainForm) {
         if (!$currentUser->ID) {
             $hasIcon = $args['icon'] ? true : false;
+            $authorEmail = $this->commenter && is_array($this->commenter) && isset($this->commenter['comment_author_email']) && (strpos($this->commenter['comment_author_email'], '@example.com') === false) ? urldecode($this->commenter['comment_author_email']) : '';
             ?>
             <div class="wpdiscuz-item <?php echo $hasIcon ? 'wpd-has-icon' : '' ?>">
                 <?php if ($hasIcon) { ?>
-                    <div class="wpd-field-icon"><i class="fa <?php echo $args['icon']; ?>"></i></div>
+                    <div class="wpd-field-icon"><i class="<?php echo strpos(trim($args['icon']), ' ') ? $args['icon'] : 'fas '.$args['icon']; ?>"></i></div>
                 <?php } ?>
                 <?php $required = $args['required'] ? 'required="required"' : ''; ?>
-                <input <?php echo $required; ?> class="<?php echo $name; ?> wpd-field" type="email" name="<?php echo $name; ?>" value="" placeholder="<?php echo $args['name']; ?>">
+                <input value="<?php echo $authorEmail; ?>" <?php echo $required; ?> class="<?php echo $name; ?> wpd-field" type="email" name="<?php echo $name; ?>" value="" placeholder="<?php echo $args['name']; ?>">
                 <?php if ($args['desc']) { ?>
-                    <div class="wpd-field-desc"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span><?php echo esc_html($args['desc']); ?></span></div>
+                    <div class="wpd-field-desc"><i class="far fa-question-circle" aria-hidden="true"></i><span><?php echo $args['desc']; ?></span></div>
                 <?php } ?>
             </div>
             <?php
@@ -63,7 +64,7 @@ class Email extends Field {
         $this->fieldDefaultData = array(
             'name' => __('Email', 'wpdiscuz'),
             'desc' => '',
-            'icon' => 'fa-at',
+            'icon' => 'fas fa-at',
             'required' => '0',
         );
     }

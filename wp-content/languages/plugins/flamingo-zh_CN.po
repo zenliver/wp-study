@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Flamingo - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2017-11-29 05:48:18+0000\n"
+"PO-Revision-Date: 2017-12-10 12:14:43+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,11 +25,11 @@ msgstr "Takayuki Miyoshi"
 
 #: includes/class-outbound-message.php:21
 msgid "Flamingo Outbound Message"
-msgstr "火烈鸟出站消息"
+msgstr "Flamingo出站消息"
 
 #: includes/class-outbound-message.php:20
 msgid "Flamingo Outbound Messages"
-msgstr "火烈鸟出站消息"
+msgstr "Flamingo出站消息"
 
 #: includes/class-inbound-message.php:196
 #: includes/class-outbound-message.php:98
@@ -42,27 +42,27 @@ msgstr "Flamingo 收件箱信息频道"
 
 #: includes/class-inbound-message.php:43
 msgid "Flamingo Inbound Message Channels"
-msgstr "火烈鸟收件箱信息频道"
+msgstr "Flamingo收件箱信息频道"
 
 #: includes/class-inbound-message.php:27
 msgid "Flamingo Inbound Message"
-msgstr "火烈鸟收件箱信息"
+msgstr "Flamingo收件箱信息"
 
 #: includes/class-contact.php:30
 msgid "Flamingo Contact Tag"
-msgstr "火烈鸟联系方式标签"
+msgstr "Flamingo联系方式标签"
 
 #: includes/class-contact.php:29
 msgid "Flamingo Contact Tags"
-msgstr "火烈鸟联系方式标签"
+msgstr "Flamingo联系方式标签"
 
 #: includes/class-contact.php:21
 msgid "Flamingo Contact"
-msgstr "火烈鸟联系方式"
+msgstr "Flamingo联系方式"
 
 #: includes/class-contact.php:20
 msgid "Flamingo Contacts"
-msgstr "火烈鸟联系方式"
+msgstr "Flamingo联系方式"
 
 #: admin/includes/meta-boxes.php:251
 msgid "Send Message"
@@ -426,7 +426,7 @@ msgstr "收件箱信息"
 
 #: admin/admin.php:28 includes/class-inbound-message.php:26
 msgid "Flamingo Inbound Messages"
-msgstr "火烈鸟收件箱"
+msgstr "Flamingo收件箱"
 
 #: admin/admin.php:21
 msgid "Address Book"
@@ -436,8 +436,8 @@ msgstr "通讯录"
 #. Plugin Name of the plugin/theme
 #: admin/admin.php:14
 msgid "Flamingo"
-msgstr "火烈鸟"
+msgstr "Flamingo"
 
 #: admin/admin.php:13 admin/admin.php:20 admin/admin.php:319
 msgid "Flamingo Address Book"
-msgstr "火烈鸟通讯录"
+msgstr "Flamingo通讯录"

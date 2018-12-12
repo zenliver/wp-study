@@ -1,0 +1,30 @@
+html { 
+    padding: 20px;
+    font-size: 25px;
+    line-height: 1.4;
+    color: red;
+    background: #f0f0f0;  
+}
+ 
+html, input {
+    font-family: 'Open Sans', sans-serif;
+    background-image: url('../../all-in-one-wp-solution/images/monster.jpg');
+    background-position: 10% 10%;
+} 
+        
+h1 {
+    margin: 0 10px;
+    font-size: 25px;
+    text-align: center;
+    color: #cf3404;
+}
+
+h2 {
+    margin: 0 10px;
+    font-size: 20px;
+    text-align: center;
+}
+
+ul {
+    color: black;
+}

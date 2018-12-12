@@ -19,7 +19,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
      * Subject UID: USER
      */
     const UID = 'user';
-
+    
     /**
      * AAM Capability Key
      *
@@ -43,16 +43,55 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
         parent::__construct($id);
         
         if (get_current_user_id() == $id) {
-            //check if user is locked
-            if ($this->user_status == 1) {
-                wp_logout();
+            //check if user is expired
+            $expired = get_user_option('aam_user_expiration');
+            if (!empty($expired)) {
+                $parts = explode('|', $expired);
+                if ($parts[0] <= date('Y-m-d H:i:s')) {
+                    $this->triggerExpiredUserAction($parts);
+                }
             }
-
+            
             //check if user's role expired
-            $expire = get_user_option('aam-role-expires');
-            if ($expire && ($expire <= time())) {
+            $roleExpire = get_user_option('aam-role-expires');
+            if ($roleExpire && ($roleExpire <= time())) {
                 $this->restoreRoles();
             }
+        }
+    }
+    
+    /**
+     * Expire user
+     * 
+     * @param array $config
+     * 
+     * @return void
+     * 
+     * @access 
+     */
+    public function triggerExpiredUserAction($config) {
+        switch($config[1]) {
+            case 'lock':
+                $this->block();
+                break;
+            
+            case 'change-role':
+                if (AAM_Core_API::getRoles()->is_role($config[2])) {
+                    $this->getSubject()->set_role($config[2]);
+                    delete_user_option($this->getSubject()->ID, 'aam_user_expiration');
+                }
+                break;
+
+            case 'delete':
+                require_once(ABSPATH . 'wp-admin/includes/user.php' );
+                wp_delete_user(
+                    $this->getId(), AAM_Core_Config::get('core.reasign.ownership.user')
+                );
+                wp_logout();
+                break;
+
+            default:
+                break;
         }
     }
     
@@ -67,22 +106,19 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
     public function block() {
         global $wpdb;
 
-        $response = false;
-        if (current_user_can('edit_users')) {
-            $status = ($this->getSubject()->user_status ? 0 : 1);
-            $result = $wpdb->update(
-                    $wpdb->users, 
-                    array('user_status' => $status), 
-                    array('ID' => $this->getId())
-            );
-            if ($result) {
-                $this->getSubject()->user_status = $status;
-                clean_user_cache($this->getSubject());
-                $response = true;
-            }
+        $status = ($this->getSubject()->user_status ? 0 : 1);
+        $result = $wpdb->update(
+                $wpdb->users, 
+                array('user_status' => $status), 
+                array('ID' => $this->getId())
+        );
+        
+        if ($result) {
+            $this->getSubject()->user_status = $status;
+            clean_user_cache($this->getSubject());
         }
 
-        return $response;
+        return $result;
     }
     
     /**
@@ -105,7 +141,7 @@ class AAM_Core_Subject_User extends AAM_Core_Subject {
         delete_user_option($this->getId(), 'aam-role-expires');
         delete_user_option($this->getId(), 'aam-original-roles');
     }
-
+    
     /**
      * Retrieve User based on ID
      *

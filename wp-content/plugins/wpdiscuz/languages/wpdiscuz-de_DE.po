@@ -351,7 +351,7 @@ msgstr "Du hast deine Kommentar-Benachrichtigung/en erfolgreich abonniert"
 #: options/class.WpdiscuzOptionsSerialized.php:491
 #: options/phrases-layouts/phrases-email.php:96
 #: utils/class.WpdiscuzEmailHelper.php:45
-msgid "Subscribe Confirmation"
+msgid "Subscription Confirmation"
 msgstr "Kommentar-Benachrichtigung"
 
 #: options/class.WpdiscuzOptionsSerialized.php:492
@@ -1108,11 +1108,11 @@ msgid "Ignore Subscription"
 msgstr "Kommentar-Benachrichtigung ignorieren"
 
 #: options/phrases-layouts/phrases-email.php:92
-msgid "Subscribe Confirmation Email Subject"
+msgid "Subscription Confirmation Email Subject"
 msgstr "Kommentar-Benachrichtigung Bestätigung -eMail Betreff"
 
 #: options/phrases-layouts/phrases-email.php:102
-msgid "Subscribe Confirmation Email Content"
+msgid "Subscription Confirmation Email Content"
 msgstr "Kommentar-Benachrichtigung Bestätigung -eMail Mitteilung"
 
 #: options/phrases-layouts/phrases-form.php:7

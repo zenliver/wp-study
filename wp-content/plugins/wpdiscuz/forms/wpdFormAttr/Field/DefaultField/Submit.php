@@ -24,11 +24,36 @@ class Submit extends Field {
         <?php
     }
 
-
-    public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId,$isMainForm) {
-        global $wpdiscuz,$post;
+    public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId, $isMainForm) {
+        global $post;
+        do_action('wpdiscuz_submit_button_before', $currentUser, $uniqueId, $isMainForm);
+        $wpdiscuz = wpDiscuz();
         ?>
         <div class="wc-field-submit">
+            <?php
+            if ($isMainForm && (current_user_can('moderate_comments') || ($post && isset($post->post_author) && $post->post_author == $currentUser->ID))) {
+                ?>
+                <label class="wpd_label">
+                    <input id="wc_sticky_comment" class="wpd_label__checkbox" value="1" type="checkbox" name="wc_sticky_comment"/>
+                    <span class="wpd_label__text">
+                        <span class="wpd_label__check">
+                            <span class="wpd-field-desc"><i class="fas fa-thumbtack wpdicon wpdicon-on"></i><span><?php echo $options->phrases['wc_stick_main_form_comment_on']; ?></span></span>
+                            <span class="wpd-field-desc"><i class="fas fa-thumbtack wpdicon wpdicon-off"></i><span><?php echo $options->phrases['wc_stick_main_form_comment_off']; ?></span></span>
+                        </span>
+                    </span>
+                </label>
+                <label class="wpd_label">
+                    <input id="wc_closed_comment" class="wpd_label__checkbox" value="1" type="checkbox" name="wc_closed_comment"/>
+                    <span class="wpd_label__text">
+                        <span class="wpd_label__check">
+                            <span class="wpd-field-desc"><i class="fas fa-lock wpdicon wpdicon-on"></i><span><?php echo $options->phrases['wc_close_main_form_comment_on']; ?></span></span>
+                            <span class="wpd-field-desc"><i class="fas fa-unlock-alt wpdicon wpdicon-off"></i><span><?php echo $options->phrases['wc_close_main_form_comment_off']; ?></span></span>
+                        </span>
+                    </span>
+                </label>
+                <?php
+            }
+            ?>
             <?php if ($options->wordpressThreadComments || class_exists('Prompt_Comment_Form_Handling')) { ?>
                 <?php
                 $isShowSubscribeWrapper = false;
@@ -41,20 +66,34 @@ class Submit extends Field {
                 }
                 if ($isShowSubscribeWrapper) {
                     $isReplyDefaultChecked = $options->isReplyDefaultChecked ? 'checked="checked"' : '';
-                    ?>
-                    <div class="wc_notification_checkboxes" style="display:block">
-                        <?php
-                        if (class_exists('Prompt_Comment_Form_Handling') && $options->usePostmaticForCommentNotification) {
-                            ?>
-                            <input id="wc_notification_new_comment-<?php echo $uniqueId; ?>" class="wc_notification_new_comment-<?php echo $uniqueId; ?>" value="post"  type="checkbox" name="wpdiscuz_notification_type"/> <label class="wc-label-comment-notify" for="wc_notification_new_comment-<?php echo $uniqueId; ?>"><?php echo $options->phrases['wc_postmatic_subscription_label']; ?></label><br />
-                            <?php
-                        } else {
-                            ?>
-                            <input id="wc_notification_new_comment-<?php echo $uniqueId; ?>" class="wc_notification_new_comment-<?php echo $uniqueId; ?>" value="comment"  type="checkbox" name="wpdiscuz_notification_type" <?php echo $isReplyDefaultChecked; ?>/> <label class="wc-label-comment-notify" for="wc_notification_new_comment-<?php echo $uniqueId; ?>"><?php echo $options->phrases['wc_notify_on_new_reply']; ?></label><br />
-                            <?php
-                        }
+                    ?>    
+                    <?php
+                    if (class_exists('Prompt_Comment_Form_Handling') && $options->usePostmaticForCommentNotification) {
                         ?>
-                    </div>
+                        <label class="wpd_label">
+                            <input id="wc_notification_new_comment-<?php echo $uniqueId; ?>" class="wc_notification_new_comment-<?php echo $uniqueId; ?> wpd_label__checkbox" value="post" type="checkbox" name="wpdiscuz_notification_type" <?php echo $isReplyDefaultChecked; ?>/>
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <span class="wpd-field-desc"><i class="fas fa-bell wpdicon wpdicon-on"></i><span><?php echo $options->phrases['wc_postmatic_subscription_label']; ?> <?php _e(' - (on)', 'wpdiscuz') ?></span></span>
+                                    <span class="wpd-field-desc"><i class="fas fa-bell-slash wpdicon wpdicon-off"></i><span><?php echo $options->phrases['wc_postmatic_subscription_label']; ?> <?php _e(' - (off)', 'wpdiscuz') ?></span></span>
+                                </span>
+                            </span>
+                        </label>
+                        <?php
+                    } else {
+                        ?>
+                        <label class="wpd_label">
+                            <input id="wc_notification_new_comment-<?php echo $uniqueId; ?>" class="wc_notification_new_comment-<?php echo $uniqueId; ?> wpd_label__checkbox" value="comment" type="checkbox" name="wpdiscuz_notification_type" <?php echo $isReplyDefaultChecked; ?>/>
+                            <span class="wpd_label__text">
+                                <span class="wpd_label__check">
+                                    <span class="wpd-field-desc"><i class="fas fa-bell wpdicon wpdicon-on"></i><span><?php echo $options->phrases['wc_notify_on_new_reply_on']; ?></span></span>
+                                    <span class="wpd-field-desc"><i class="fas fa-bell-slash wpdicon wpdicon-off"></i><span><?php echo $options->phrases['wc_notify_on_new_reply_off']; ?></span></span>
+                                </span>
+                            </span>
+                        </label>
+                        <?php
+                    }
+                    ?>
                 <?php } ?>
             <?php } ?>
             <input class="wc_comm_submit wc_not_clicked button alt" type="submit" name="<?php echo $name; ?>" value="<?php echo $args['name']; ?>">
@@ -78,10 +117,16 @@ class Submit extends Field {
         );
     }
 
-    public function frontHtml($value,$args) {}
-    
-    public function validateFieldData($fieldName,$args, $options, $currentUser) {}
-    
-    public function editCommentHtml($key, $value ,$data,$comment) {}
+    public function frontHtml($value, $args) {
+        
+    }
+
+    public function validateFieldData($fieldName, $args, $options, $currentUser) {
+        
+    }
+
+    public function editCommentHtml($key, $value, $data, $comment) {
+        
+    }
 
 }

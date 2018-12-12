@@ -1,27 +1,25 @@
-=== Content Protector ===
-Contributors: kjvtough
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=5F58ELJ9R3PVL&lc=CA&item_name=Content%20Protector%20Wordpress%20Plugin%20Donation&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
+=== Passster ===
+Contributors: patrickposner
 Tags: protect, lock, CAPTCHA, password, hide, content, secret, AJAX, cookie, post, page, secure
 Requires at least: 2.0.2
-Tested up to: 4.5.3
-Stable tag: 2.11
+Tested up to: 4.9.4
+Stable tag: 3.0
 License: GPL2
 
 Plugin to protect content on a Page or Post, where users require a password to access that content.
 
 == Description ==
-The Content Protector plugin allows users to password-protect a portion of a Page or Post.  This is done by adding a shortcode that you wrap
+The Passster plugin allows users to password-protect a portion of a Page or Post.  This is done by adding a shortcode that you wrap
 around the content you want to protect.  Your users are shown an access form in which to enter a password; if it's correct, the protected content
 will get displayed.
 
 Features
 
 * Set up multiple protected sections on a single Post
-* Display the protected content inline via AJAX or by reloading the page
 * Set cookies so users won't need to re-enter the password on every visit, and share authorization with groups of protected sections.
 * Apply custom CSS to your forms
 * Choose from a variety of encryption methods for your passwords (depending on your server configuration)
-* Set custom passwords or use a CAPTCHA to authorize your visitors
+* Set custom passwords to authorize your visitors
 
 A TinyMCE dialog is included to help users build the shortcode. See the Screenshots tab for more info.
 
@@ -41,19 +39,27 @@ Coming soon.  In the meantime, check out the <a href="http://wordpress.org/suppo
 
 == Screenshots ==
 
-1. The Form Instructions tab on the Content Protector Settings page.
-2. The Form CSS tab on the Content Protector Settings page.
-3. TinyMCE dialog for generating Content Protector shortcodes.
-4. A Content Protector shortcode wrapped around some top-secret content.
-5. The access form Content Protector creates for your authorized users to enter the password.
+1. The Form Instructions tab on the Passster Settings page.
+2. The Form CSS tab on the Passster Settings page.
+3. TinyMCE dialog for generating Passster shortcodes.
+4. A Passster shortcode wrapped around some top-secret content.
+5. The access form Passster creates for your authorized users to enter the password.
 6. If the password is wrong, an error message is displayed, along with the access form so they can try again.
 7. A correct password results in a success message being displayed, along with the unlocked content.
 8. If you've set a cookie, the success message is only shown on initial authorization. This is how the unlocked content will be shown until the cookie expires.
-9. A Content Protector access form that uses a CAPTCHA.  You can customize the image under Settings -> Content Protector.
+9. A Passster access form that uses a CAPTCHA.  You can customize the image under Settings -> Passster.
 
 == Changelog ==
+
+= 2.2 =
+* under new development
+* compatibilty with WordPress 4.9+
+* clean up and restructure whole plugin
+* remove deprecated solutions for ajax and captcha
+* removed date based selection of cookie expires
+
 = 2.11 =
-* Setting "Password Field Placeholder" now accessible through "Settings -> Content Protector -> Password/CAPTCHA Field"
+* Setting "Password Field Placeholder" now accessible through "Settings -> Passster -> Password/CAPTCHA Field"
 
 = 2.10 =
 * Form and CAPTCHA instructions moved to outside the form.
@@ -204,28 +210,24 @@ NOTE: The shortcode can be built using the built-in TinyMCE dialog.  When in dou
 
 = Shortcode =
 
-`[content_protector password="{string}" identifier="{string}" cookie_expires="{string|int}" ajax="{true|{string}}"]...[/content_protector]`
+`[content_protector password="{string}" identifier="{string}" cookie_expires="{string|int}"]...[/content_protector]`
 
 * `password` - Specifies the password that unlocks the protected content. Upper- and lower-case Latin alphabet letters (A-Z and a-z), numbers (0-9), and "." and "/" only.  Set `password` to "CAPTCHA" to add a CAPTCHA to your access form.
 * `identifier` <em>(Optional)</em> - Used to differentiate between multiple instances of protected content
 * `cookie_expires` <em>(Optional)</em> - If set, put a cookie on the user's computer so the user doesn't need to re-enter the password when revisiting the page.
-* `ajax` <em>(Optional)</em> - Load the protected content using AJAX instead of reloading the page. Set to "true" to activate, but you must also set the `identifier` attribute in order to use this.
-
 = Template/Conditional Tag =
 
 `content_protector_is_logged_in( $password = "", $identifier = "", $post_id = "", $cookie_expires = "" )`
 
 * `$password`, `$cookie_expires`, and `$identifier` are defined the same as their analogous attributes above. `$post_id` is the Post ID.
-* Returns `true` if the user is currently authorized to access the content protected by a Content Protector shortcode matching those parameters.
+* Returns `true` if the user is currently authorized to access the content protected by a Passster shortcode matching those parameters.
 * All arguments are <strong>required</strong>.
 
 = Notes =
 
 1. `cookie_expires` can be either a string or an integer. If it's an integer, it's processed as the number of seconds before the cookie expires; set it to "0" to make the cookie
-expire when the browser is closed.  If it's a string, it can be either a duration (e.g., "2 weeks") or a human-readable date/time description
-with timezone identifier (e.g., "January 1, 2014 12:01 AM America/New York"). The plugin uses PHP's <a href="http://www.php.net/manual/en/function.strtotime.php">strtotime</a>
-function to process dates/times, so anything it can understand can be used depending on your server configuration.
-2. While the use of `identifier` is optional, you *must* set it if you want to apply custom CSS or use AJAX with a specific access form, or to use Shared Authorization.
+expire when the browser is closed.  If it's a string, it can be either a duration (e.g., "2 weeks")
+2. While the use of `identifier` is optional, you *must* set it if you want to apply custom CSS with a specific access form, or to use Shared Authorization.
 3. While you don't need to set `identifier` if you want to want to set a cookie for specific protected content, editing that content in the future will invalidate any
 cookies set for it (this may actually be desired behaviour, depending on what you're trying to do).
 4. Basically, when in doubt, set the `identifier` attribute.  You'll thank yourself later.

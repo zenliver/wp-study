@@ -32,8 +32,8 @@ class Website extends Field {
                 <p class="wpd-info"><?php _e('Font-awesome icon library.', 'wpdiscuz'); ?></p>
             </div>
             <div class="wpd-field-option">
-                <label><?php _e('Enable', 'wpdiscuz'); ?>:</label> 
-                <input type="checkbox" value="1" <?php checked($this->fieldData['enable'], 1, true); ?> name="<?php echo $this->fieldInputName; ?>[enable]" />
+                <label for="<?php echo $this->fieldInputName; ?>"><?php _e('Enable', 'wpdiscuz'); ?>:</label> 
+                <input type="checkbox" value="1" <?php checked($this->fieldData['enable'], 1, true); ?> name="<?php echo $this->fieldInputName; ?>[enable]" id="<?php echo $this->fieldInputName; ?>"/>
             </div>
             <div style="clear:both;"></div>
         </div>
@@ -41,18 +41,19 @@ class Website extends Field {
     }
 
     public function frontFormHtml($name, $args, $options, $currentUser, $uniqueId, $isMainForm) {
-        if (!$currentUser->ID) {
+        if (!$currentUser->ID) {            
             $hasIcon = $args['icon'] ? true : false;
             if ($args['enable']) {
+                $authorUrl = $this->commenter && is_array($this->commenter) && isset($this->commenter['comment_author_url']) ? urldecode($this->commenter['comment_author_url']) : '';
                 ?>
-                <div class="wpdiscuz-item <?php echo $hasIcon ? 'wpd-has-icon' : ''?>">
+                <div class="wpdiscuz-item <?php echo $hasIcon ? 'wpd-has-icon' : '' ?>">
                     <?php if ($hasIcon) { ?>
-                    <div class="wpd-field-icon"><i class="fa <?php echo $args['icon']; ?>"></i></div>
+                        <div class="wpd-field-icon"><i class="<?php echo strpos(trim($args['icon']), ' ') ? $args['icon'] : 'fas '.$args['icon']; ?>"></i></div>
                     <?php } ?>
-                    <input class="<?php echo $name; ?> wpd-field" type="text" name="<?php echo $name; ?>" value="" placeholder="<?php echo $args['name']; ?>">
+                        <input value="<?php echo $authorUrl; ?>" class="<?php echo $name; ?> wpd-field" type="text" name="<?php echo $name; ?>" value="" placeholder="<?php echo $args['name']; ?>">
                     <?php if ($args['desc']) { ?>
-                        <div class="wpd-field-desc"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span><?php echo esc_html($args['desc']); ?></span></div>
-                    <?php } ?>
+                        <div class="wpd-field-desc"><i class="far fa-question-circle" aria-hidden="true"></i><span><?php echo $args['desc']; ?></span></div>
+                            <?php } ?>
                 </div>
                 <?php
             }
@@ -82,12 +83,12 @@ class Website extends Field {
         $this->fieldDefaultData = array(
             'name' => __('Website', 'wpdiscuz'),
             'desc' => '',
-            'icon' => 'fa-link',
+            'icon' => 'fas fa-link',
             'enable' => '0',
         );
     }
 
-    public function validateFieldData($fieldName,$args, $options, $currentUser) {
+    public function validateFieldData($fieldName, $args, $options, $currentUser) {
         $website_url = trim(filter_input(INPUT_POST, $fieldName, FILTER_SANITIZE_STRING));
         if ($website_url != '' && (strpos($website_url, 'http://') !== '' && strpos($website_url, 'http://') !== 0) && (strpos($website_url, 'https://') !== '' && strpos($website_url, 'https://') !== 0)) {
             $website_url = 'http://' . $website_url;
@@ -99,8 +100,13 @@ class Website extends Field {
         }
         return $website_url;
     }
-    
-    public function editCommentHtml($key, $value ,$data,$comment) {}
-    public function frontHtml($value,$args) {}
+
+    public function editCommentHtml($key, $value, $data, $comment) {
+        
+    }
+
+    public function frontHtml($value, $args) {
+        
+    }
 
 }

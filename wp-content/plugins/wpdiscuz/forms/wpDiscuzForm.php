@@ -3,6 +3,7 @@ include_once 'autoload.php';
 
 use wpdFormAttr\FormConst\wpdFormConst;
 use wpdFormAttr\Form;
+use wpdFormAttr\Login\SocialLogin;
 
 class wpDiscuzForm implements wpdFormConst {
 
@@ -12,6 +13,7 @@ class wpDiscuzForm implements wpdFormConst {
     private $form;
     private $formContentTypeRel;
     private $formPostRel;
+    private $socialLogin;
 
     public function __construct($options, $pluginVersion) {
         global $pagenow;
@@ -21,6 +23,7 @@ class wpDiscuzForm implements wpdFormConst {
         $this->initAdminPhrazes();
         $this->formContentTypeRel = $options->formContentTypeRel;
         $this->formPostRel = $options->formPostRel;
+        SocialLogin::getInstance($this->options);
         add_action('init', array(&$this, 'registerPostType'), 1);
         add_action('admin_init', array(&$this, 'custoFormRoleCaps'), 999);
         add_action('admin_menu', array(&$this, 'addFormToAdminMenu'), 874);
@@ -171,9 +174,9 @@ class wpDiscuzForm implements wpdFormConst {
     public function customFormAdminScripts() {
         global $current_screen;
         if ($current_screen->id == self::WPDISCUZ_FORMS_CONTENT_TYPE) {
-            wp_register_style('fontawesome-iconpicker-css', plugins_url(WPDISCUZ_DIR_NAME . '/assets/third-party/fontawesome-iconpicker/css/fontawesome-iconpicker.min.css'), array(), '1.0.0');
+            wp_register_style('fontawesome-iconpicker-css', plugins_url(WPDISCUZ_DIR_NAME . '/assets/third-party/fontawesome-iconpicker/css/fontawesome-iconpicker.min.css'), array(), '1.12.1');
             wp_enqueue_style('fontawesome-iconpicker-css');
-            wp_register_script('fontawesome-iconpicker-js', plugins_url(WPDISCUZ_DIR_NAME . '/assets/third-party/fontawesome-iconpicker/js/fontawesome-iconpicker.min.js'), array('jquery'), '1.0.0', true);
+            wp_register_script('fontawesome-iconpicker-js', plugins_url(WPDISCUZ_DIR_NAME . '/assets/third-party/fontawesome-iconpicker/js/fontawesome-iconpicker.js'), array('jquery'), '1.12.1', true);
             wp_enqueue_script('fontawesome-iconpicker-js');
             wp_register_style('wpdiscuz-custom-form-css', plugins_url(WPDISCUZ_DIR_NAME . '/assets/css/wpdiscuz-custom-form.css'), array(), $this->pluginVersion);
             wp_enqueue_style('wpdiscuz-custom-form-css');
@@ -292,7 +295,7 @@ class wpDiscuzForm implements wpdFormConst {
             }
             $this->form->setFormID($formID);
         }
-        return $this->form;
+        return apply_filters('wpdiscuz_get_form',$this->form);
     }
 
     public function formCustomCssMetabox() {
@@ -364,6 +367,7 @@ class wpDiscuzForm implements wpdFormConst {
             $postTypes = array(
                 'post' => 'post',
                 'attachment' => 'attachment',
+                'page' => 'page',
             );
             $this->options->initPhrasesOnLoad();
             $generalOptions = $this->getDefaultFormGeneralOptions($version, $lang, $wpdGeneralOptions, $phrases, $postTypes);
@@ -514,7 +518,10 @@ class wpDiscuzForm implements wpdFormConst {
 
     private function chagePostSingleRating($metaKey, $commentID, $difference, $postRatings) {
         $commentFieldRating = get_comment_meta($commentID, $metaKey, true);
-        if (key_exists($metaKey, $postRatings) && $commentFieldRating) {
+        if(!$postRatings){
+            $postRatings = array($metaKey => array());
+        }
+        if ($commentFieldRating) {
             if (key_exists($commentFieldRating, $postRatings[$metaKey])) {
                 $postRatings[$metaKey][$commentFieldRating] = $postRatings[$metaKey][$commentFieldRating] + $difference;
             } else {

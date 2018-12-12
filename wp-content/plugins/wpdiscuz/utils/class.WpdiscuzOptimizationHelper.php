@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit();
 }
 
-class WpdiscuzOptimizationHelper {
+class WpdiscuzOptimizationHelper implements WpDiscuzConstants {
 
     private $optionsSerialized;
     private $dbManager;
@@ -16,6 +16,9 @@ class WpdiscuzOptimizationHelper {
         $this->dbManager = $dbManager;
         $this->emailHelper = $emailHelper;
         $this->wpdiscuzForm = $wpdiscuzForm;
+        add_action('comment_post', array(&$this, 'updateStatistics'), 11, 1);
+        add_action('delete_comment', array(&$this, 'updateStatistics'), 11, 2);
+        add_action('deleted_comment', array(&$this, 'cleanCommentRelatedRows'));
     }
 
     /**
@@ -54,12 +57,11 @@ class WpdiscuzOptimizationHelper {
      * @param type $comment current comment object
      */
     public function statusEventHandler($newStatus, $oldStatus, $comment) {
-        if ($newStatus != $oldStatus) {
-            if ($newStatus == 'approved') {
-                $this->notifyOnApprove($comment);
-                if ($this->optionsSerialized->isNotifyOnCommentApprove) {
-                    $this->emailHelper->notifyOnApproving($comment);
-                }
+        $this->updateStatistics($comment->comment_ID, $comment);
+        if ($newStatus != $oldStatus && $newStatus == 'approved') {
+            $this->notifyOnApprove($comment);
+            if ($this->optionsSerialized->isNotifyOnCommentApprove) {
+                $this->emailHelper->notifyOnApproving($comment);
             }
         }
     }
@@ -104,17 +106,41 @@ class WpdiscuzOptimizationHelper {
     }
 
     public function removeVoteData() {
-        if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'remove_vote_data') && isset($_GET['remove']) && intval($_GET['remove']) == 1 && current_user_can('manage_options')) {
-            $res = $this->dbManager->removeVotes();
-        }
-        if ($res) {
-            wp_redirect(admin_url('edit-comments.php?page=' . WpdiscuzCore::PAGE_SETTINGS));
+        if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'remove_vote_data') && current_user_can('manage_options')) {
+            $this->dbManager->removeVotes();
+            wp_redirect(admin_url('edit-comments.php?page=' . self::PAGE_SETTINGS));
         }
     }
-    
+
+    public function resetPhrases() {
+        if (isset($_GET['_wpnonce']) && wp_verify_nonce($_GET['_wpnonce'], 'reset_phrases_nonce') && current_user_can('manage_options')) {
+            $this->dbManager->deletePhrases();
+            wp_redirect(admin_url('edit-comments.php?page=' . self::PAGE_PHRASES));
+        }
+    }
+
     public function cleanCommentRelatedRows($commentId) {
         $this->dbManager->deleteSubscriptions($commentId);
         $this->dbManager->deleteVotes($commentId);
+    }
+
+    public function updateStatistics($commentId, $comment = null) {
+        if (!$comment && $commentId) {
+            $comment = get_comment($commentId);
+        }
+        if ($comment) {
+            $authorsCount = $this->dbManager->getAuthorsCount($comment->comment_post_ID, false);
+            set_transient(self::TRS_AUTHORS_COUNT . $comment->comment_post_ID, $authorsCount);
+            $followers = $this->dbManager->getAllSubscriptionsCount($comment->comment_post_ID, false);
+            set_transient(self::TRS_FOLLOWERS_COUNT . $comment->comment_post_ID, $followers);
+            $repliesCount = $this->dbManager->getRepliesCount($comment->comment_post_ID, false);
+            set_transient(self::TRS_REPLIES_COUNT . $comment->comment_post_ID, $repliesCount);
+            $threadsCount = $this->dbManager->getThreadsCount($comment->comment_post_ID, false);
+            set_transient(self::TRS_THREADS_COUNT . $comment->comment_post_ID, $threadsCount);
+            $authorsLimit = apply_filters('wpdiscuz_recent_authors_limit', 5);
+            $recentAuthors = $this->dbManager->getRecentAuthors($comment->comment_post_ID, $authorsLimit, false);
+            set_transient(self::TRS_RECENT_AUTHORS . $comment->comment_post_ID, $recentAuthors);
+        }
     }
 
 }
